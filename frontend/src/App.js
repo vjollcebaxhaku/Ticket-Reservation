@@ -2,14 +2,15 @@ import React from 'react';
 import { BrowserRouter as Router, Routes, Route } from 'react-router-dom';
 import Layout from './components/Layout';
 import Footer from './components/Footer';
+import Slider from './components/Slider'; 
 
 function App() {
   return (
     <Router>
       <div className="App">
-        <Routes>
-          <Route path="/" element={<Layout currentPage="home" />} />
-        </Routes>
+        <Layout currentPage="home">
+        </Layout>
+        <Slider />
         <Footer />
       </div>
     </Router>

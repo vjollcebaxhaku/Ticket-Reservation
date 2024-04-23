@@ -1,0 +1,45 @@
+.sliderImg {
+    height: 100%; 
+    width: 100%; 
+    display: flex;
+    flex-wrap: nowrap; 
+    align-items: center;
+    justify-content: center;
+    background-color: rgb(200, 13, 116); 
+    font-family: 'supplyregular';
+    font-size: 17px;
+}
+
+.sliderImg p {
+    margin-right: 50px; 
+    width: 200%;
+    color: black; 
+    font-weight: bold;
+    text-transform: uppercase;
+}
+
+.slider {
+    display: flex;
+    place-items: center;
+    position: relative;
+    height: 80px; 
+    width: 100%;
+    overflow: hidden;
+}
+
+.containeri {
+    display: flex;
+    width: auto;
+    height: 100%;
+    animation: play 20s linear infinite;
+}
+
+@keyframes play{
+    0%{
+        transform: translateX(0);
+    }
+
+    100%{
+        transform: translateX(calc(-250px*6));
+    }
+}
