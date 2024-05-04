@@ -3,17 +3,13 @@ const prisma = new PrismaClient();
 
 
 
-
 const getUsers = async (req, res) => {
-    const client = await pool.connect();
     try {
-        const result = await client.query('SELECT * FROM users');
-        res.json(result.rows);
+        const users = await prisma.user.findMany();
+        res.json(users);
     } catch (error) {
-        res.status(500).json({ error: error.message });
-    } finally {
-        client.release();
-    }
+        res.status(500).json({ error: error.message });
+    }
 };
 
 
