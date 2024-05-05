@@ -5,7 +5,7 @@ import Tickets from './components/pages/Tickets';
 import Gallery from './components/pages/Gallery';
 import Layout from './components/Layout';
 import Lineup from './components/pages/Lineup';
-import News from './components/pages/News'; // Import the News component
+import News from './components/pages/News'; 
 import Footer from './components/Footer';
 import Nav from './components/Nav';
 import AboutUs from './components/pages/AboutUs';
