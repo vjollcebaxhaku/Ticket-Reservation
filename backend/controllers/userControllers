@@ -1,128 +1,118 @@
+// controllers/userControllers.js
 const { PrismaClient } = require('@prisma/client');
-const prisma = new PrismaClient();
+const prisma = new PrismaClient();
 
-
-
+// GET all users
 const getUsers = async (req, res) => {
     try {
         const users = await prisma.user.findMany();
         res.json(users);
     } catch (error) {
-        res.status(500).json({ error: error.message });
-    }
+        res.status(500).json({ error: error.message });
+    }
+};
+
+// POST create a new user
+// controllers/userControllers.js
+
+// POST create a new user
+const createUser = async (req, res) => {
+    const { name, email, password, surname, username } = req.body; // Destructure all fields
+    try {
+        const newUser = await prisma.user.create({
+            data: {
+                name,
+                email,
+                password,
+                surname,
+                username
+            }
+        });
+        res.status(201).json(newUser);
+    } catch (error) {
+        res.status(500).json({ error: error.message });
+    }
 };
 
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-module.exports = { getUsers }
+// GET a single user by ID
+const getUserById = async (req, res) => {
+    const { id } = req.params;
+    try {
+        const user = await prisma.user.findUnique({
+            where: {
+                id: parseInt(id)
+            }
+        });
+        if (!user) {
+            res.status(404).json({ error: "User not found" });
+            return;
+        }
+        res.json(user);
+    } catch (error) {
+        res.status(500).json({ error: error.message });
+    }
+};
+
+// controllers/userControllers.js
+
+// PUT update a user by ID
+const updateUser = async (req, res) => {
+    const { id } = req.params;
+    const { name, email, password, surname, username } = req.body; // Destructure all fields
+    try {
+        const updatedUser = await prisma.user.update({
+            where: {
+                id: parseInt(id)
+            },
+            data: {
+                name,
+                email,
+                password,
+                surname,
+                username
+            }
+        });
+        res.json(updatedUser);
+    } catch (error) {
+        res.status(500).json({ error: error.message });
+    }
+};
+
+// DELETE a user by ID
+const deleteUser = async (req, res) => {
+    const { id } = req.params;
+    try {
+        await prisma.user.delete({
+            where: {
+                id: parseInt(id)
+            }
+        });
+        res.json({ message: "User deleted successfully" });
+    } catch (error) {
+        res.status(500).json({ error: error.message });
+    }
+};
+const loginUser = async (req, res) => {
+    const { email, password } = req.body;
+    try {
+        const user = await prisma.user.findUnique({
+            where: {
+                email
+            }
+        });
+        if (!user) {
+            res.json({ success: false, message: "User not found" });
+            return;
+        }
+        if (user.password !== password) {
+            res.json({ success: false, message: "Incorrect password" });
+            return;
+        }
+        res.json({ success: true, message: "Login successful" });
+    } catch (error) {
+        res.status(500).json({ success: false, error: error.message });
+    }
+};
+
+module.exports = { getUsers, createUser, getUserById, updateUser, deleteUser, loginUser };

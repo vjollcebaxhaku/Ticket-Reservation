@@ -1,29 +1,44 @@
+// routes/userRoutes.js
 const express = require('express');
 const router = express.Router();
 
-router.get('/tweets', (req, res) => {
-    const str = [
-        {
-            "name": "Codr Kai",
-            "msg": "This is my first tweet!",
-            "username": "codrkai"
-        },
-        {
-            "name": "Samantha Kai",
-            "msg": "React JS is so simple!",
-            "username": "samanthakai"
-        },
-        {
-            "name": "John K",
-            "msg": "Sweep the leg!",
-            "username": "johnk"
-        }
-    ];
-    res.end(JSON.stringify(str));
-});
+const { getUsers, createUser, getUserById, updateUser, deleteUser, loginUser } = require('../controllers/userControllers');
 
-router.post('/addTweet', (req, res) => {
-    res.end('NA');
-});
+// GET all users
+router.get('/users', getUsers);
+
+// POST create a new user
+router.post('/users', createUser);
+
+// GET a single user by ID
+router.get('/users/:id', getUserById);
+
+// PUT update a user by ID
+router.put('/users/:id', updateUser);
+
+// DELETE a user by ID
+router.delete('/users/:id', deleteUser);
+
+router.post('/login', loginUser);
+
+
+
+const { getTickets, createTicket, getTicketById, updateTicket, deleteTicket } = require('../controllers/ticketControllers');
+
+// GET all tickets
+router.get('/tickets', getTickets);
+
+// POST create a new ticket
+router.post('/tickets', createTicket);
+
+// GET a single ticket by ID
+router.get('/tickets/:id', getTicketById);
+
+// PUT update a ticket by ID
+router.put('/tickets/:id', updateTicket);
+
+// DELETE a ticket by ID
+router.delete('/tickets/:id', deleteTicket);
+
 
 module.exports = router;

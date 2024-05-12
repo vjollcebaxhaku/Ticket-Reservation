@@ -3,19 +3,19 @@ import { Link } from 'react-router-dom';
 
 function Nav() {
     const navLinkStyle = {
-        color: '#000', 
+        color: '#000',
         fontSize: '16px',
-        fontWeight: 'bold', 
+        fontWeight: 'bold',
         textTransform: 'uppercase',
         textDecoration: 'none',
     };
 
     const navbarStyle = {
-        position: 'fixed', 
+        position: 'fixed',
         top: 0,
         width: '100%',
-        height:'65px',
-        zIndex: 1000, 
+        height: '65px',
+        zIndex: 1000,
     };
 
     return (
@@ -29,6 +29,8 @@ function Nav() {
                     <Link to='/tickets' className="nav-item nav-link" style={navLinkStyle}>TICKETS</Link>
                     <Link to='/line-up' className="nav-item nav-link" style={navLinkStyle}>LINE-UP</Link>
                     <Link to='/news' className="nav-item nav-link" style={navLinkStyle}>NEWS</Link>
+                    <Link to='/login' className="nav-item nav-link" style={navLinkStyle}>Login</Link>
+
                     <Link to='/aftermovie' className="nav-item nav-link" style={navLinkStyle}></Link>
                     <Link to='/about' className="nav-item nav-link" style={navLinkStyle}>About Us</Link>
                     <Link to='/faq' className="nav-item nav-link" style={navLinkStyle}>FAQ</Link>

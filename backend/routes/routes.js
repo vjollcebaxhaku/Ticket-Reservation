@@ -1,4 +1,5 @@
-const { getUsers } = require('./controllers/userController');
+const { getUsers } = require('../controllers/userControllers');
 
 
 router.get('/users', getUsers);
+

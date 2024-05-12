@@ -6,6 +6,9 @@ function Faq() {
   return (
     <Layout pictureSrc={ticketPic}>
       <section>
+        <div>
+      
+        </div>
       </section>
     </Layout>
   );
