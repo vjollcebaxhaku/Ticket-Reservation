@@ -8,7 +8,6 @@ function Faq() {
 
   const handleQuestionClick = (index) => {
     if (index === selectedQuestion) {
-      // If the same question is clicked again, close it
       setSelectedQuestion(null);
     } else {
       setSelectedQuestion(index);
