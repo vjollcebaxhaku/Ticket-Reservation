@@ -20,9 +20,10 @@ model User {
   name     String?
   surname  String?
   username String?
+  role     String?
 
   // Add the opposite relation field for tickets
-  tickets  Ticket[] // This will allow retrieving all tickets associated with a user
+  tickets  Ticket[] // This will allow retrieving all tickets associated with a user
 }
 
 model Ticket {
@@ -33,10 +34,37 @@ model Ticket {
   type      String
 
   // Foreign key relation to User
-  user      User     @relation(fields: [userId], references: [id])
+  user      User     @relation(fields: [userId], references: [id])
 }
 
+model Lineup {
+  id           Int      @id @default(autoincrement())
+  artistName   String
+  genre        String
+  description  String
+  imageUrl     String
+}
 
+model News {
+  id          Int      @id @default(autoincrement())
+  title       String
+  content     String
+  publishedAt DateTime
+}
+
+model Gallery {
+  id          Int      @id @default(autoincrement())
+  title       String
+  description String
+  imageUrl    String
+  publishedAt DateTime
+}
+
+model FAQ {
+  id          Int      @id @default(autoincrement())
+  question    String
+  answer      String
+}
 
 
 

@@ -109,10 +109,14 @@ const loginUser = async (req, res) => {
             res.json({ success: false, message: "Incorrect password" });
             return;
         }
-        res.json({ success: true, message: "Login successful" });
+        // Assuming you have a 'role' field associated with each user
+        const role = user.role;
+
+        res.json({ success: true, message: "Login successful", role });
     } catch (error) {
         res.status(500).json({ success: false, error: error.message });
     }
 };
+
 
 module.exports = { getUsers, createUser, getUserById, updateUser, deleteUser, loginUser };

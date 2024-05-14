@@ -7,17 +7,19 @@ import Layout from './components/Layout';
 import Lineup from './components/pages/Lineup';
 import News from './components/pages/News';
 import Footer from './components/Footer';
-import Nav from './components/Nav';
 import AboutUs from './components/pages/AboutUs';
 import Faq from './components/pages/Faq';
 import Login from './components/Login/Login';
 import Sidebar from './dashboard/Sidebar';
 import Dashboard from './dashboard/Dashboard';
+import Nav from './components/Nav';
+import Register from './components/Login/Regsiter';
 
 function App() {
   return (
     <Router>
-      <div className="App">
+
+      <div>
         <Nav />
         <Layout>
           <Routes>
@@ -28,9 +30,9 @@ function App() {
             <Route path="/news" element={<News />} />
             <Route path="/login" element={<Login />} />
             <Route path="/dashboard" element={<Dashboard />} />
-
             <Route path="/about" element={<AboutUs />} />
             <Route path="/faq" element={<Faq />} />
+            <Route path="/register" element={<Register />} />
           </Routes>
         </Layout>
         <Footer />
