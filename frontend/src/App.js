@@ -1,7 +1,7 @@
 import React from 'react';
 import { BrowserRouter as Router, Routes, Route } from 'react-router-dom';
 import Home from './components/pages/Home';
-import Tickets from './components/pages/Tickets';
+import PageTickets from './components/pages/Tickets'; // Renamed import
 import Gallery from './components/pages/Gallery';
 import Layout from './components/Layout';
 import Lineup from './components/pages/Lineup';
@@ -14,6 +14,8 @@ import Sidebar from './dashboard/Sidebar';
 import Dashboard from './dashboard/Dashboard';
 import Nav from './components/Nav';
 import Register from './components/Login/Regsiter';
+import Users from './dashboard/Users';
+import DashboardTickets from './dashboard/Tickets'; // Renamed import
 
 function App() {
   return (
@@ -24,7 +26,7 @@ function App() {
         <Layout>
           <Routes>
             <Route path="/" element={<Home />} />
-            <Route path="/tickets" element={<Tickets />} />
+            <Route path="/tickets" element={<PageTickets />} />
             <Route path="/gallery" element={<Gallery />} />
             <Route path="/line-up" element={<Lineup />} />
             <Route path="/news" element={<News />} />
@@ -33,6 +35,8 @@ function App() {
             <Route path="/about" element={<AboutUs />} />
             <Route path="/faq" element={<Faq />} />
             <Route path="/register" element={<Register />} />
+            <Route path="/users" element={<Users />} />
+            <Route path="/dashboard/tickets" element={<DashboardTickets />} /> {/* Updated import */}
           </Routes>
         </Layout>
         <Footer />
