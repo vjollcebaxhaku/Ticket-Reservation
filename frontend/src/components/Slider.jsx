@@ -1,49 +1,31 @@
-import React from "react";
+import React, { useState, useEffect } from "react";
 
 const Slider = () => {
-  return (
-    <div className="overflow-hidden">
-      <style>
-        {`
-        @keyframes slide {
-          0% {
-            transform: translateX(0);
-          }
-          100% {
-            transform: translateX(-100% ); 
-          }
-        }
-      
-        .animate-slide {
-          animation: slide 20s linear infinite;
-        }
-        `}
-      </style>
+  const [translateX, setTranslateX] = useState(0);
 
-      <div className="flex space-x-0 animate-slide">
-        <div className="flex-shrink-0 bg-pink-600 text-black font-supply font-bold text-xl uppercase p-4">
-          <p>Stay tuned for 2024</p>
-        </div>
-        <div className="flex-shrink-0 bg-pink-600 text-black font-supply font-bold text-xl uppercase p-4">
-          <p>Stay tuned for 2024</p>
-        </div>
-        <div className="flex-shrink-0 bg-pink-600 text-black font-supply font-bold text-xl uppercase p-4">
-          <p>Stay tuned for 2024</p>
-        </div>
-        <div className="flex-shrink-0 bg-pink-600 text-black font-supply font-bold text-xl uppercase p-4">
-          <p>Stay tuned for 2024</p>
-        </div>
-        <div className="flex-shrink-0 bg-pink-600 text-black font-supply font-bold text-xl uppercase p-4">
-          <p>Stay tuned for 2024</p>
-        </div>
-        <div className="flex-shrink-0 bg-pink-600 text-black font-supply font-bold text-xl uppercase p-4">
-          <p>Stay tuned for 2024</p>
-        </div>
-        <div className="flex-shrink-0 bg-pink-600 text-black font-supply font-bold text-xl uppercase p-4">
-          <p>Stay tuned for 2024</p>
-        </div>
-        <div className="flex-shrink-0 bg-pink-600 text-black font-supply font-bold text-xl uppercase p-4">
-          <p>Stay tuned for 2024</p>
+  useEffect(() => {
+    const interval = setInterval(() => {
+      setTranslateX((prevTranslateX) =>
+        prevTranslateX <= -1500 ? 0 : prevTranslateX - 1
+      );
+    }, 10);
+
+    return () => clearInterval(interval);
+  }, []);
+
+  return (
+    <div className="slider overflow-hidden">
+      <div
+        className="containeri flex"
+        style={{ transform: `translateX(${translateX}px)` }}
+      >
+        <div className="sliderImg bg-pink-600 flex items-center justify-center font-supply text-lg text-black font-bold uppercase">
+          <p className="mr-12">Stay tuned for 2024</p>
+          <p className="mr-12">Stay tuned for 2024</p>
+          <p className="mr-12">Stay tuned for 2024</p>
+          <p className="mr-12">Stay tuned for 2024</p>
+          <p className="mr-12">Stay tuned for 2024</p>
+          <p className="mr-12">Stay tuned for 2024</p>
         </div>
       </div>
     </div>
