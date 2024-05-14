@@ -12,6 +12,7 @@ import AboutUs from './components/pages/AboutUs';
 import Faq from './components/pages/Faq';
 import Login from './components/Login/Login';
 import Sidebar from './dashboard/Sidebar';
+import Dashboard from './dashboard/Dashboard';
 
 function App() {
   return (
@@ -26,7 +27,7 @@ function App() {
             <Route path="/line-up" element={<Lineup />} />
             <Route path="/news" element={<News />} />
             <Route path="/login" element={<Login />} />
-            <Route path="/dashboard" element={<Sidebar />} />
+            <Route path="/dashboard" element={<Dashboard />} />
 
             <Route path="/about" element={<AboutUs />} />
             <Route path="/faq" element={<Faq />} />

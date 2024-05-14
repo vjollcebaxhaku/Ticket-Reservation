@@ -22,27 +22,48 @@ const Login = () => {
 
   const navigate = useNavigate();
   return (
-    <div className="">
-      <div className="row">
-        <div className="col-md-6 offset-md-3">
-          <h2 className="mb-4">Login</h2>
-          <form onSubmit={handleSubmit}>
-            <h1 className="text-3xl font-bold underline">
-      <div className='w-10'></div>
-            </h1>
-            <div className="mb-3">
-              <label htmlFor="email" className="form-label">Email address</label>
-              <input type="email" className="form-control" id="email" value={email} onChange={(e) => setEmail(e.target.value)} />
-            </div>
-            <div className="mb-3">
-              <label htmlFor="password" className="form-label">Password</label>
-              <input type="password" className="form-control" id="password" value={password} onChange={(e) => setPassword(e.target.value)} />
-            </div>
-            <button type="submit" className="btn btn-primary">Login</button>
-          </form>
+    <div className="min-h-screen bg-gray-100 flex justify-center items-center">
+    <div className="max-w-md w-full p-8 bg-white shadow-lg rounded-lg">
+      <h2 className="text-2xl font-semibold text-center mb-6">Login</h2>
+      <form onSubmit={handleSubmit}>
+        <div className="mb-4">
+          <label htmlFor="email" className="block text-gray-700 font-bold mb-2">
+            Email Address
+          </label>
+          <input
+            type="email"
+            id="email"
+            className="appearance-none border rounded-md w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline"
+            placeholder="Enter your email"
+            value={email}
+            onChange={(e) => setEmail(e.target.value)}
+            required
+          />
         </div>
-      </div>
+        <div className="mb-6">
+          <label htmlFor="password" className="block text-gray-700 font-bold mb-2">
+            Password
+          </label>
+          <input
+            type="password"
+            id="password"
+            className="appearance-none border rounded-md w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline"
+            placeholder="Enter your password"
+            value={password}
+            onChange={(e) => setPassword(e.target.value)}
+            required
+          />
+        </div>
+        <button
+          type="submit"
+          className="bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded focus:outline-none focus:shadow-outline"
+        >
+          Login
+        </button>
+      </form>
     </div>
+    </div>
+
   );
 };
 
