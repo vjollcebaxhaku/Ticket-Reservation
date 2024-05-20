@@ -14,7 +14,7 @@ import Sidebar from './dashboard/Sidebar';
 import Dashboard from './dashboard/Dashboard';
 import Nav from './components/Nav';
 import Register from './components/Login/Regsiter';
-import Users from './dashboard/Users';
+import Users from './dashboard/users';
 import DashboardTickets from './dashboard/Tickets'; // Renamed import
 
 function App() {

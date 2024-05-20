@@ -1,26 +1,37 @@
 import React, { useState, useEffect } from 'react';
 import { Link } from 'react-router-dom';
-import axios from 'axios'; 
+import axios from 'axios';
 
-const UsersManagement = () => {
-  const [users, setUsers] = useState([]);
+const userManagement = () => {
+  const [user, setuser] = useState([]);
 
   useEffect(() => {
-    const fetchUsers = async () => {
+    const fetchuser = async () => {
       try {
-        const response = await axios.get('/api/users'); 
+        const response = await axios.get('/api/user');  
+        setuser(response.data);
       } catch (error) {
-        console.error('Error fetching users:', error);
+        console.error('Error fetching user:', error);
       }
     };
 
-    fetchUsers();
+    fetchuser();
   }, []);
+
+  const handleDelete = async (userId) => {
+    try {
+      await axios.delete(`/api/user/${userId}`);
+      // Update the user list after deletion
+      setuser(user.filter((user) => user.id !== userId));
+    } catch (error) {
+      console.error('Error deleting user:', error);
+    }
+  };
 
   return (
     <div className="font-sans bg-gray-900 text-white min-h-screen">
       <h2 className="text-3xl font-bold mb-6">User Management</h2>
-      {users.length > 0 ? (
+      {user.length > 0 ? (
         <table className="w-full">
           <thead>
             <tr>
@@ -32,7 +43,7 @@ const UsersManagement = () => {
             </tr>
           </thead>
           <tbody>
-            {users.map((user) => (
+            {user.map((user) => (
               <tr key={user.id} className="hover:bg-gray-700">
                 <td className="py-2 px-4">{user.id}</td>
                 <td className="py-2 px-4">{user.username}</td>
@@ -40,18 +51,17 @@ const UsersManagement = () => {
                 <td className="py-2 px-4">{user.role}</td>
                 <td className="py-2 px-4">
                   <div className="flex">
-                    <Link
-                      to={`/edituser/${user.id}`}
-                      className="text-blue-400 hover:text-blue-200 mr-2"
-                    >
+                  <Link to={`/edituser/${user.id}`} 
+                  className="text-blue-400 hover:text-blue-200 mr-2">
+
                       Edit
                     </Link>
-                    <Link
-                      to={`/deleteuser/${user.id}`}
+                    <button
+                      onClick={() => handleDelete(user.id)}
                       className="text-red-400 hover:text-red-200"
                     >
                       Delete
-                    </Link>
+                    </button>
                   </div>
                 </td>
               </tr>
@@ -59,7 +69,7 @@ const UsersManagement = () => {
           </tbody>
         </table>
       ) : (
-        <p className="text-lg">No users available.</p>
+        <p className="text-lg">No user available.</p>
       )}
       <div className="mt-6">
         <Link to="/dashboard">
@@ -72,4 +82,4 @@ const UsersManagement = () => {
   );
 };
 
-export default UsersManagement;
+export default userManagement;
