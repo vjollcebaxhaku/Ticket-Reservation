@@ -1,16 +1,17 @@
 import React, { useState, useEffect } from 'react';
 import { Link } from 'react-router-dom';
 import axios from 'axios';
-import { Box, Button, CircularProgress, Container, Table, TableBody, TableCell, TableHead, TableRow, Typography } from '@mui/material';
+import { Alert, Box, Button, CircularProgress, Container, Snackbar, Table, TableBody, TableCell, TableHead, TableRow, Typography } from '@mui/material';
 
 const UserManagement = () => {
   const [user, setUser] = useState([]);
   const [loading, setLoading] = useState(true);
+  const [snackbarOpen, setSnackbarOpen] = useState(false);
 
   useEffect(() => {
     const fetchUser = async () => {
       try {
-        const response = await axios.get('/api/user');  
+        const response = await axios.get('http://localhost:4000/users');  
         setUser(response.data);
         setLoading(false);
       } catch (error) {
@@ -24,12 +25,16 @@ const UserManagement = () => {
 
   const handleDelete = async (userId) => {
     try {
-      await axios.delete(`/api/user/${userId}`);
-      // Update the user list after deletion
+      await axios.delete(`http://localhost:4000/users/${userId}`);
+      setSnackbarOpen(true);
       setUser(user.filter((user) => user.id !== userId));
     } catch (error) {
       console.error('Error deleting user:', error);
     }
+  };
+
+  const handleCloseSnackbar = () => {
+    setSnackbarOpen(false);
   };
 
   return (
@@ -37,6 +42,11 @@ const UserManagement = () => {
       <Typography variant="h3" component="h2" gutterBottom>
         User Management
       </Typography>
+      <Box mb={2}>
+        <Button variant="contained" color="primary" component={Link} to="/users/add">
+          + User
+        </Button>
+      </Box>
       {loading ? (
         <CircularProgress />
       ) : user.length > 0 ? (
@@ -59,7 +69,7 @@ const UserManagement = () => {
                 <TableCell>{user.role}</TableCell>
                 <TableCell>
                   <Box display="flex" gap={1}>
-                    <Button variant="contained" color="primary" component={Link} to={`/edituser/${user.id}`}>
+                    <Button variant="contained" color="primary" component={Link} to={`/users/${user.id}`}>
                       Edit
                     </Button>
                     <Button variant="contained" color="secondary" onClick={() => handleDelete(user.id)}>
@@ -81,6 +91,11 @@ const UserManagement = () => {
           Go Back to Dashboard
         </Button>
       </Box>
+      <Snackbar open={snackbarOpen} autoHideDuration={6000} onClose={handleCloseSnackbar} anchorOrigin={{ vertical: 'top', horizontal: 'right' }}>
+        <Alert onClose={handleCloseSnackbar} severity="success" sx={{ width: '100%' }}>
+          User has been deleted!
+        </Alert>
+      </Snackbar>
     </Container>
   );
 };

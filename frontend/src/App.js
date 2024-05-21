@@ -13,10 +13,12 @@ import Login from './components/Login/Login';
 import Dashboard from './dashboard/Dashboard';
 import Nav from './components/Nav';
 import Register from './components/Login/Regsiter';
-import Users from './dashboard/users';
+import Users from './dashboard/Users';
 import DashboardTickets from './dashboard/Tickets'; // Renamed import
 import NotFound from './components/pages/NonAdmin';
 import AdminRoutes from './AdminRoutes';
+import AddUser from './dashboard/users/addUser';
+import EditUser from './dashboard/users/editUser';
 
 function App() {
   return (
@@ -37,6 +39,8 @@ function App() {
             <Route element={<AdminRoutes />}>
               <Route path="/dashboard" element={<Dashboard />} />
               <Route element={<Users />} path="/users" />
+              <Route element={<AddUser/>} path="/users/add" />
+              <Route element={<EditUser />} path="/users/:id" />
               <Route element={<News />} path="/news-management" />
               <Route element={<DashboardTickets />} path="/ticket-management" />
             </Route>
