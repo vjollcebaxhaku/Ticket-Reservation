@@ -10,19 +10,18 @@ import Footer from './components/Footer';
 import AboutUs from './components/pages/AboutUs';
 import Faq from './components/pages/Faq';
 import Login from './components/Login/Login';
-import Sidebar from './dashboard/Sidebar';
 import Dashboard from './dashboard/Dashboard';
 import Nav from './components/Nav';
 import Register from './components/Login/Regsiter';
 import Users from './dashboard/users';
 import DashboardTickets from './dashboard/Tickets'; // Renamed import
+import NotFound from './components/pages/NonAdmin';
+import AdminRoutes from './AdminRoutes';
 
 function App() {
   return (
     <Router>
-
       <div>
-        <Nav />
         <Layout>
           <Routes>
             <Route path="/" element={<Home />} />
@@ -31,12 +30,16 @@ function App() {
             <Route path="/line-up" element={<Lineup />} />
             <Route path="/news" element={<News />} />
             <Route path="/login" element={<Login />} />
-            <Route path="/dashboard" element={<Dashboard />} />
             <Route path="/about" element={<AboutUs />} />
             <Route path="/faq" element={<Faq />} />
             <Route path="/register" element={<Register />} />
-            <Route path="/users" element={<Users />} />
-            <Route path="/dashboard/tickets" element={<DashboardTickets />} /> {/* Updated import */}
+            <Route path='/not-found' element={<NotFound/>}/>
+            <Route element={<AdminRoutes />}>
+              <Route path="/dashboard" element={<Dashboard />} />
+              <Route element={<Users />} path="/users" />
+              <Route element={<News />} path="/news-management" />
+              <Route element={<DashboardTickets />} path="/ticket-management" />
+            </Route>
           </Routes>
         </Layout>
         <Footer />

@@ -1,85 +1,88 @@
 import React, { useState, useEffect } from 'react';
 import { Link } from 'react-router-dom';
 import axios from 'axios';
+import { Box, Button, CircularProgress, Container, Table, TableBody, TableCell, TableHead, TableRow, Typography } from '@mui/material';
 
-const userManagement = () => {
-  const [user, setuser] = useState([]);
+const UserManagement = () => {
+  const [user, setUser] = useState([]);
+  const [loading, setLoading] = useState(true);
 
   useEffect(() => {
-    const fetchuser = async () => {
+    const fetchUser = async () => {
       try {
         const response = await axios.get('/api/user');  
-        setuser(response.data);
+        setUser(response.data);
+        setLoading(false);
       } catch (error) {
         console.error('Error fetching user:', error);
+        setLoading(false);
       }
     };
 
-    fetchuser();
+    fetchUser();
   }, []);
 
   const handleDelete = async (userId) => {
     try {
       await axios.delete(`/api/user/${userId}`);
       // Update the user list after deletion
-      setuser(user.filter((user) => user.id !== userId));
+      setUser(user.filter((user) => user.id !== userId));
     } catch (error) {
       console.error('Error deleting user:', error);
     }
   };
 
   return (
-    <div className="font-sans bg-gray-900 text-white min-h-screen">
-      <h2 className="text-3xl font-bold mb-6">User Management</h2>
-      {user.length > 0 ? (
-        <table className="w-full">
-          <thead>
-            <tr>
-              <th className="bg-gray-800 text-left py-2 px-4">ID</th>
-              <th className="bg-gray-800 text-left py-2 px-4">Username</th>
-              <th className="bg-gray-800 text-left py-2 px-4">Email</th>
-              <th className="bg-gray-800 text-left py-2 px-4">Role</th>
-              <th className="bg-gray-800 text-left py-2 px-4">Action</th>
-            </tr>
-          </thead>
-          <tbody>
+    <Container sx={{ minHeight: '100vh', display: 'flex', flexDirection: 'column', justifyContent: 'center', alignItems: 'center', bgcolor: 'background.default', color: 'text.primary', py: 4 }}>
+      <Typography variant="h3" component="h2" gutterBottom>
+        User Management
+      </Typography>
+      {loading ? (
+        <CircularProgress />
+      ) : user.length > 0 ? (
+        <Table sx={{ mt: 4, bgcolor: 'background.paper' }}>
+          <TableHead>
+            <TableRow>
+              <TableCell>ID</TableCell>
+              <TableCell>Username</TableCell>
+              <TableCell>Email</TableCell>
+              <TableCell>Role</TableCell>
+              <TableCell>Action</TableCell>
+            </TableRow>
+          </TableHead>
+          <TableBody>
             {user.map((user) => (
-              <tr key={user.id} className="hover:bg-gray-700">
-                <td className="py-2 px-4">{user.id}</td>
-                <td className="py-2 px-4">{user.username}</td>
-                <td className="py-2 px-4">{user.email}</td>
-                <td className="py-2 px-4">{user.role}</td>
-                <td className="py-2 px-4">
-                  <div className="flex">
-                  <Link to={`/edituser/${user.id}`} 
-                  className="text-blue-400 hover:text-blue-200 mr-2">
-
+              <TableRow key={user.id} hover>
+                <TableCell>{user.id}</TableCell>
+                <TableCell>{user.username}</TableCell>
+                <TableCell>{user.email}</TableCell>
+                <TableCell>{user.role}</TableCell>
+                <TableCell>
+                  <Box display="flex" gap={1}>
+                    <Button variant="contained" color="primary" component={Link} to={`/edituser/${user.id}`}>
                       Edit
-                    </Link>
-                    <button
-                      onClick={() => handleDelete(user.id)}
-                      className="text-red-400 hover:text-red-200"
-                    >
+                    </Button>
+                    <Button variant="contained" color="secondary" onClick={() => handleDelete(user.id)}>
                       Delete
-                    </button>
-                  </div>
-                </td>
-              </tr>
+                    </Button>
+                  </Box>
+                </TableCell>
+              </TableRow>
             ))}
-          </tbody>
-        </table>
+          </TableBody>
+        </Table>
       ) : (
-        <p className="text-lg">No user available.</p>
+        <Typography variant="h6">
+          No users available.
+        </Typography>
       )}
-      <div className="mt-6">
-        <Link to="/dashboard">
-          <button className="bg-gray-800 text-white py-2 px-4 rounded-md hover:bg-gray-700">
-            Go Back to Dashboard
-          </button>
-        </Link>
-      </div>
-    </div>
+      <Box mt={6}>
+        <Button variant="contained" color="primary" component={Link} to="/dashboard">
+          Go Back to Dashboard
+        </Button>
+      </Box>
+    </Container>
   );
 };
 
-export default userManagement;
+export default UserManagement;

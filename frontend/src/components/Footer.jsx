@@ -1,38 +1,72 @@
 import React from 'react';
+import { Box, Container, Typography, Link, IconButton } from '@mui/material';
+import FacebookIcon from '@mui/icons-material/Facebook';
+import InstagramIcon from '@mui/icons-material/Instagram';
+import TwitterIcon from '@mui/icons-material/Twitter';
+import YouTubeIcon from '@mui/icons-material/YouTube';
 
 function Footer() {
     return (
-        <footer className="bg-gray-900 text-white py-5 font-mono" style={{ backgroundColor: '#414042', paddingLeft: 0, paddingRight: 0 }}>
-            <div className="container flex flex-col sm:flex-row justify-between">
-                <div className="self-start">
-                    <ul className="list-none p-0 m-0" style={{ marginBlockStart: 0, marginBlockEnd: 0 }}>
-                        <li className="mb-3"><a href="#" className="font-bold text-lg">VOLUNTEER</a></li>
-                        <li className="mb-3"><a href="#" className="font-bold text-lg">PRIVACY POLICY</a></li>
-                        <li className="mb-3"><a href="#" className="font-bold text-lg">TERMS OF USE</a></li>
+        <Box 
+            component="footer" 
+            sx={{ 
+                backgroundColor: '#414042', 
+                py: 5, 
+                width: '100%', 
+                position: 'relative', 
+                bottom: 0 
+            }}
+        >
+            <Container 
+                sx={{ 
+                    display: 'flex', 
+                    flexDirection: { xs: 'column', sm: 'row' }, 
+                    justifyContent: 'space-between', 
+                    alignItems: 'start', 
+                    px: 0 
+                }}
+            >
+                <Box>
+                    <ul style={{ listStyle: 'none', padding: 0, margin: 0 }}>
+                        <li style={{ marginBottom: '16px' }}>
+                            <Link href="#" color="white" underline="hover" sx={{ fontWeight: 'bold', fontSize: '18px' }}>VOLUNTEER</Link>
+                        </li>
+                        <li style={{ marginBottom: '16px' }}>
+                            <Link href="#" color="white" underline="hover" sx={{ fontWeight: 'bold', fontSize: '18px' }}>PRIVACY POLICY</Link>
+                        </li>
+                        <li style={{ marginBottom: '16px' }}>
+                            <Link href="#" color="white" underline="hover" sx={{ fontWeight: 'bold', fontSize: '18px' }}>TERMS OF USE</Link>
+                        </li>
                     </ul>
-                </div>
-                <div className="contact-info text-sm font-bold flex flex-col items-end">
-                    <p>EMAIL: INFO@SUNNYHILLFESTIVAL.COM</p>
-                    <p>REPUBLIKA.TV</p>
-                    <p>SUNNY HILL FESTIVAL</p>
-                    <p>ENVER MALOKU, NR. 82,</p>
-                    <p>PRISHTINE 10000 KOSOVE</p>
-                </div>
-            </div>
-            <div className="container" style={{ paddingLeft: 0, paddingRight: 0 }}>
-                <div className="flex justify-center">
-                    <div className="social-icons">
-                        <a href="#"><img src="facebook-icon.png" alt="Facebook Icon" className="mr-2" /></a>
-                        <a href="#"><img src="instagram-icon.png" alt="Instagram Icon" className="mr-2" /></a>
-                        <a href="#"><img src="twitter-icon.png" alt="Twitter Icon" className="mr-2" /></a>
-                        <a href="#"><img src="youtube-icon.png" alt="YouTube Icon" className="mr-2" /></a>
-                    </div>
-                </div>
-                <div className="flex justify-center">
-                    <p className="text-xs opacity-75">© ALL RIGHTS RESERVED CRAFTED BY: REPUBLIKA.TV</p>
-                </div>
-            </div>
-        </footer>
+                </Box>
+                <Box sx={{ textAlign: { xs: 'center', sm: 'right' }, mt: { xs: 3, sm: 0 } }}>
+                    <Typography variant="body2" fontWeight="bold" color="white">EMAIL: INFO@SUNNYHILLFESTIVAL.COM</Typography>
+                    <Typography variant="body2" fontWeight="bold" color="white">REPUBLIKA.TV</Typography>
+                    <Typography variant="body2" fontWeight="bold" color="white">SUNNY HILL FESTIVAL</Typography>
+                    <Typography variant="body2" fontWeight="bold" color="white">ENVER MALOKU, NR. 82,</Typography>
+                    <Typography variant="body2" fontWeight="bold" color="white">PRISHTINE 10000 KOSOVE</Typography>
+                </Box>
+            </Container>
+            <Container sx={{ mt: 3, textAlign: 'center', px: 0 }}>
+                <Box>
+                    <IconButton href="#" color="inherit">
+                        <FacebookIcon sx={{ color: 'white' }} />
+                    </IconButton>
+                    <IconButton href="#" color="inherit">
+                        <InstagramIcon sx={{ color: 'white' }} />
+                    </IconButton>
+                    <IconButton href="#" color="inherit">
+                        <TwitterIcon sx={{ color: 'white' }} />
+                    </IconButton>
+                    <IconButton href="#" color="inherit">
+                        <YouTubeIcon sx={{ color: 'white' }} />
+                    </IconButton>
+                </Box>
+                <Typography variant="caption" display="block" sx={{ mt: 2, opacity: 0.75, color: 'white' }}>
+                    © ALL RIGHTS RESERVED CRAFTED BY: REPUBLIKA.TV
+                </Typography>
+            </Container>
+        </Box>
     );
 }
 

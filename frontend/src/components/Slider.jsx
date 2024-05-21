@@ -1,35 +1,79 @@
-import React, { useState, useEffect } from "react";
+import React from 'react';
+import { Box, Typography, useTheme } from '@mui/material';
+import { keyframes } from '@emotion/react';
+import { pink } from '@mui/material/colors';
 
-const Slider = () => {
-  const [translateX, setTranslateX] = useState(0);
+const scroll = keyframes`
+  0% {
+    transform: translateX(0);
+  }
+  100% {
+    transform: translateX(-50%);
+  }
+`;
 
-  useEffect(() => {
-    const interval = setInterval(() => {
-      setTranslateX((prevTranslateX) =>
-        prevTranslateX <= -1500 ? 0 : prevTranslateX - 1
-      );
-    }, 10);
-
-    return () => clearInterval(interval);
-  }, []);
-
+const ContinuousSlider = () => {
+  const theme = useTheme();
   return (
-    <div className="slider overflow-hidden">
-      <div
-        className="containeri flex"
-        style={{ transform: `translateX(${translateX}px)` }}
+    <Box
+      sx={{
+        overflow: 'hidden',
+        whiteSpace: 'nowrap',
+        display: 'flex',
+        alignItems: 'center',
+        bgcolor: pink[600],
+        height: '50px',
+      }}
+    >
+      <Box
+        component="div"
+        sx={{
+          display: 'inline-flex',
+          animation: `${scroll} 10s linear infinite`,
+          width: '200%',
+        }}
       >
-        <div className="sliderImg bg-pink-600 flex items-center justify-center font-supply text-lg text-black font-bold uppercase">
-          <p className="mr-12">Stay tuned for 2024</p>
-          <p className="mr-12">Stay tuned for 2024</p>
-          <p className="mr-12">Stay tuned for 2024</p>
-          <p className="mr-12">Stay tuned for 2024</p>
-          <p className="mr-12">Stay tuned for 2024</p>
-          <p className="mr-12">Stay tuned for 2024</p>
-        </div>
-      </div>
-    </div>
+        <Box sx={{ display: 'flex', width: '50%' }}>
+          {Array(6)
+            .fill('Stay tuned for 2024')
+            .map((text, index) => (
+              <Typography
+                key={index}
+                variant="h6"
+                sx={{
+                  display: 'inline-block',
+                  paddingRight: theme.spacing(6),
+                  fontWeight: 'bold',
+                  textTransform: 'uppercase',
+                  color: 'black',
+                }}
+              >
+                {text}
+              </Typography>
+            ))}
+        </Box>
+        <Box sx={{ display: 'flex', width: '50%' }}>
+          {Array(6)
+            .fill('Stay tuned for 2024')
+            .map((text, index) => (
+              <Typography
+                key={index}
+                variant="h6"
+                sx={{
+                  display: 'inline-block',
+                  paddingRight: theme.spacing(6),
+                  fontWeight: 'bold',
+                  textTransform: 'uppercase',
+                  color: 'black',
+                }}
+              >
+                {text}
+              </Typography>
+            ))}
+        </Box>
+      </Box>
+    </Box>
   );
 };
 
-export default Slider;
+export default ContinuousSlider;
