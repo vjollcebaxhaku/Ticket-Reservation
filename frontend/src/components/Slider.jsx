@@ -35,7 +35,7 @@ const ContinuousSlider = () => {
       >
         <Box sx={{ display: 'flex', width: '50%' }}>
           {Array(6)
-            .fill('Stay tuned for 2024')
+            .fill('Stay tuned for 2024     ')
             .map((text, index) => (
               <Typography
                 key={index}
