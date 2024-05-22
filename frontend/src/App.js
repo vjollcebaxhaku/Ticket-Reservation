@@ -13,7 +13,7 @@ import Login from './components/Login/Login';
 import Dashboard from './dashboard/Dashboard';
 import Nav from './components/Nav';
 import Register from './components/Login/Regsiter';
-import Users from './dashboard/Users';
+import Users from './dashboard/users';
 import DashboardTickets from './dashboard/Tickets'; // Renamed import
 import NotFound from './components/pages/NonAdmin';
 import AdminRoutes from './AdminRoutes';
@@ -24,6 +24,7 @@ function App() {
   return (
     <Router>
       <div>
+        <Nav/>
         <Layout>
           <Routes>
             <Route path="/" element={<Home />} />
