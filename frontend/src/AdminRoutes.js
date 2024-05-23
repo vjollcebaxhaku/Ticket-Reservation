@@ -1,10 +1,7 @@
-import { Outlet, Navigate } from 'react-router-dom'
+import { Outlet } from 'react-router-dom';
 
 const AdminRoutes = () => {
-    const isAdmin = sessionStorage.getItem('currentUserRole') === 'admin';
-    return(
-        isAdmin ? <Outlet/> : <Navigate to="/not-found"/>
-    )
-}
+    return <Outlet />;
+};
 
-export default AdminRoutes
+export default AdminRoutes;

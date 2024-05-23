@@ -10,7 +10,7 @@ generator client {
 
 datasource db {
   provider = "mysql"
-  url      = env("DATABASE_URL")
+  url      = "mysql://root:@localhost:3306/ticket-reservation"
 }
 
 model User {
@@ -65,6 +65,7 @@ model FAQ {
   question    String
   answer      String
 }
+
 
 
 
