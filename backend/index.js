@@ -9,7 +9,6 @@ const app = express();
 app.use(bodyParser.urlencoded({ extended: false }));
 app.use(bodyParser.json());
 
-// Use CORS middleware with the desired configuration
 const corsOptions = {
   origin: 'http://localhost:3000',
   optionsSuccessStatus: 200,
