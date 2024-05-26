@@ -27,6 +27,7 @@ import EditFaq from './dashboard/faq/editFaq'; // Import EditFaq component
 import NewsManagement from './dashboard/NewsManagement'; // Import NewsManagement component
 import AddNews from './dashboard/news/addNews'; // Import AddNews component
 import EditNews from './dashboard/news/editNews'; // Import EditNews component
+import TicketPurchase from './components/pages/TicketPurchase'; // Import TicketPurchase component
 
 function App() {
   return (
@@ -45,6 +46,7 @@ function App() {
             <Route path="/faq" element={<Faq />} />
             <Route path="/register" element={<Register />} />
             <Route path="/not-found" element={<NotFound />} />
+            <Route path="/ticket-purchase" element={<TicketPurchase />} /> {/* Add route for TicketPurchase */}
             <Route element={<AdminRoutes />}>
               <Route path="/dashboard" element={<Dashboard />} />
               <Route path="/users" element={<Users />} />

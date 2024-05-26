@@ -22,15 +22,17 @@ const ContinuousSlider = () => {
         display: 'flex',
         alignItems: 'center',
         bgcolor: pink[600],
-        height: '50px',
+        height: '75px', // Increase height to 80px
+        width: '100%', // Set width to 100%
+        fontFamily: 'Roboto Mono, monospace', // Use the same font as in the navbar
       }}
     >
       <Box
         component="div"
         sx={{
           display: 'inline-flex',
-          animation: `${scroll} 10s linear infinite`,
-          width: '200%',
+          animation: `${scroll} 15s linear infinite`, // Slower animation
+          width: '200%', // Adjust slider width
         }}
       >
         <Box sx={{ display: 'flex', width: '50%' }}>
@@ -46,6 +48,7 @@ const ContinuousSlider = () => {
                   fontWeight: 'bold',
                   textTransform: 'uppercase',
                   color: 'black',
+                  fontSize: '17px', // Font size
                 }}
               >
                 {text}
@@ -65,6 +68,7 @@ const ContinuousSlider = () => {
                   fontWeight: 'bold',
                   textTransform: 'uppercase',
                   color: 'black',
+                  fontSize: '17px', // Font size
                 }}
               >
                 {text}

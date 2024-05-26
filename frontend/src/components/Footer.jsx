@@ -29,22 +29,22 @@ function Footer() {
                 <Box>
                     <ul style={{ listStyle: 'none', padding: 0, margin: 0 }}>
                         <li style={{ marginBottom: '16px' }}>
-                            <Link href="#" color="white" underline="hover" sx={{ fontWeight: 'bold', fontSize: '18px' }}>VOLUNTEER</Link>
+                            <Link href="#" color="white" underline="hover" sx={{ fontWeight: 'bold', fontSize: '18px', fontFamily: 'Roboto Mono, monospace' }}>VOLUNTEER</Link>
                         </li>
                         <li style={{ marginBottom: '16px' }}>
-                            <Link href="#" color="white" underline="hover" sx={{ fontWeight: 'bold', fontSize: '18px' }}>PRIVACY POLICY</Link>
+                            <Link href="#" color="white" underline="hover" sx={{ fontWeight: 'bold', fontSize: '18px', fontFamily: 'Roboto Mono, monospace' }}>PRIVACY POLICY</Link>
                         </li>
                         <li style={{ marginBottom: '16px' }}>
-                            <Link href="#" color="white" underline="hover" sx={{ fontWeight: 'bold', fontSize: '18px' }}>TERMS OF USE</Link>
+                            <Link href="#" color="white" underline="hover" sx={{ fontWeight: 'bold', fontSize: '18px', fontFamily: 'Roboto Mono, monospace' }}>TERMS OF USE</Link>
                         </li>
                     </ul>
                 </Box>
                 <Box sx={{ textAlign: { xs: 'center', sm: 'right' }, mt: { xs: 3, sm: 0 } }}>
-                    <Typography variant="body2" fontWeight="bold" color="white">EMAIL: INFO@SUNNYHILLFESTIVAL.COM</Typography>
-                    <Typography variant="body2" fontWeight="bold" color="white">REPUBLIKA.TV</Typography>
-                    <Typography variant="body2" fontWeight="bold" color="white">SUNNY HILL FESTIVAL</Typography>
-                    <Typography variant="body2" fontWeight="bold" color="white">ENVER MALOKU, NR. 82,</Typography>
-                    <Typography variant="body2" fontWeight="bold" color="white">PRISHTINE 10000 KOSOVE</Typography>
+                    <Typography variant="body2" fontWeight="bold" color="white" sx={{ fontFamily: 'Roboto Mono, monospace' }}>EMAIL: INFO@SUNNYHILLFESTIVAL.COM</Typography>
+                    <Typography variant="body2" fontWeight="bold" color="white" sx={{ fontFamily: 'Roboto Mono, monospace' }}>REPUBLIKA.TV</Typography>
+                    <Typography variant="body2" fontWeight="bold" color="white" sx={{ fontFamily: 'Roboto Mono, monospace' }}>SUNNY HILL FESTIVAL</Typography>
+                    <Typography variant="body2" fontWeight="bold" color="white" sx={{ fontFamily: 'Roboto Mono, monospace' }}>ENVER MALOKU, NR. 82,</Typography>
+                    <Typography variant="body2" fontWeight="bold" color="white" sx={{ fontFamily: 'Roboto Mono, monospace' }}>PRISHTINE 10000 KOSOVE</Typography>
                 </Box>
             </Container>
             <Container sx={{ mt: 3, textAlign: 'center', px: 0 }}>
@@ -62,7 +62,7 @@ function Footer() {
                         <YouTubeIcon sx={{ color: 'white' }} />
                     </IconButton>
                 </Box>
-                <Typography variant="caption" display="block" sx={{ mt: 2, opacity: 0.75, color: 'white' }}>
+                <Typography variant="caption" display="block" sx={{ mt: 2, opacity: 0.75, color: 'white', fontFamily: 'Roboto Mono, monospace' }}>
                     © ALL RIGHTS RESERVED CRAFTED BY: REPUBLIKA.TV
                 </Typography>
             </Container>

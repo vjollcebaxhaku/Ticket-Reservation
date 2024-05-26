@@ -91,9 +91,9 @@ function Faq() {
         <div>
           {faqData.map((faq, index) => (
             <div key={index} className="mb-0">
-              <div className="border-b border-green-500">
+              <div className={`border-b ${selectedQuestion === index ? '' : 'border-green-500'}`}>
                 <button
-                  className={`text-left w-full bg-white text-black font-bold font-mono py-3 px-4 rounded-t-lg text-lg relative focus:outline-none ${selectedQuestion === index ? 'border border-green-500' : ''}`}
+                  className={`text-left w-full bg-white text-black font-bold font-mono py-3 px-4 rounded-t-lg text-lg relative focus:outline-white ${selectedQuestion === index ? 'border border-green-500' : ''}`}
                   onClick={() => handleQuestionClick(index)}
                 >
                   {faq.question}

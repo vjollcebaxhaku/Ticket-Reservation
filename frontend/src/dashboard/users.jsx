@@ -38,65 +38,74 @@ const UserManagement = () => {
   };
 
   return (
-    <Container sx={{ minHeight: '100vh', display: 'flex', flexDirection: 'column', justifyContent: 'center', alignItems: 'center', bgcolor: 'background.default', color: 'text.primary', py: 4 }}>
-      <Typography variant="h3" component="h2" gutterBottom>
-        User Management
-      </Typography>
-      <Box mb={2}>
-        <Button variant="contained" color="primary" component={Link} to="/users/add">
-          + User
-        </Button>
-      </Box>
-      {loading ? (
-        <CircularProgress />
-      ) : user.length > 0 ? (
-        <Table sx={{ mt: 4, bgcolor: 'background.paper' }}>
-          <TableHead>
-            <TableRow>
-              <TableCell>ID</TableCell>
-              <TableCell>Username</TableCell>
-              <TableCell>Email</TableCell>
-              <TableCell>Role</TableCell>
-              <TableCell>Action</TableCell>
-            </TableRow>
-          </TableHead>
-          <TableBody>
-            {user.map((user) => (
-              <TableRow key={user.id} hover>
-                <TableCell>{user.id}</TableCell>
-                <TableCell>{user.username}</TableCell>
-                <TableCell>{user.email}</TableCell>
-                <TableCell>{user.role}</TableCell>
-                <TableCell>
-                  <Box display="flex" gap={1}>
-                    <Button variant="contained" color="primary" component={Link} to={`/users/${user.id}`}>
-                      Edit
-                    </Button>
-                    <Button variant="contained" color="secondary" onClick={() => handleDelete(user.id)}>
-                      Delete
-                    </Button>
-                  </Box>
-                </TableCell>
-              </TableRow>
-            ))}
-          </TableBody>
-        </Table>
-      ) : (
-        <Typography variant="h6">
-          No users available.
+    <Box
+      sx={{
+        bgcolor: '#f5f5f5',
+        borderRadius: 4,
+        p: 4,
+        boxShadow: 1
+      }}
+    >
+      <Container sx={{ display: 'flex', flexDirection: 'column', justifyContent: 'center', alignItems: 'center', py: 4 }}>
+        <Typography variant="h3" component="h2" gutterBottom sx={{ fontFamily: "'Roboto Mono', monospace", color: 'black' }}>
+          User Management
         </Typography>
-      )}
-      <Box mt={6}>
-        <Button variant="contained" color="primary" component={Link} to="/dashboard">
-          Go Back to Dashboard
-        </Button>
-      </Box>
-      <Snackbar open={snackbarOpen} autoHideDuration={6000} onClose={handleCloseSnackbar} anchorOrigin={{ vertical: 'top', horizontal: 'right' }}>
-        <Alert onClose={handleCloseSnackbar} severity="success" sx={{ width: '100%' }}>
-          User has been deleted!
-        </Alert>
-      </Snackbar>
-    </Container>
+        <Box mb={2}>
+          <Button variant="contained" style={{ backgroundColor: '#630a87', color: '#fff', fontFamily: "'Roboto Mono', monospace" }} component={Link} to="/users/add">
+            + User
+          </Button>
+        </Box>
+        {loading ? (
+          <CircularProgress />
+        ) : user.length > 0 ? (
+          <Table sx={{ mt: 4, bgcolor: 'background.paper' }}>
+            <TableHead>
+              <TableRow>
+                <TableCell>ID</TableCell>
+                <TableCell>Username</TableCell>
+                <TableCell>Email</TableCell>
+                <TableCell>Role</TableCell>
+                <TableCell>Action</TableCell>
+              </TableRow>
+            </TableHead>
+            <TableBody>
+              {user.map((user) => (
+                <TableRow key={user.id} hover>
+                  <TableCell>{user.id}</TableCell>
+                  <TableCell>{user.username}</TableCell>
+                  <TableCell>{user.email}</TableCell>
+                  <TableCell>{user.role}</TableCell>
+                  <TableCell>
+                    <Box display="flex" gap={1}>
+                      <Button variant="contained" style={{ backgroundColor: '#630a87', color: '#fff', fontFamily: "'Roboto Mono', monospace" }} component={Link} to={`/users/${user.id}`}>
+                        Edit
+                      </Button>
+                      <Button variant="contained" style={{ backgroundColor: '#FF69B4', fontFamily: "'Roboto Mono', monospace", color: 'black' }} onClick={() => handleDelete(user.id)}>
+                        Delete
+                      </Button>
+                    </Box>
+                  </TableCell>
+                </TableRow>
+              ))}
+            </TableBody>
+          </Table>
+        ) : (
+          <Typography variant="h6" sx={{ fontFamily: "'Roboto Mono', monospace", color: 'black' }}>
+            No users available.
+          </Typography>
+        )}
+        <Box mt={6}>
+          <Button variant="contained" style={{ backgroundColor: '#FF69B4', fontFamily: "'Roboto Mono', monospace", color: 'black' }} component={Link} to="/dashboard">
+            Go Back to Dashboard
+          </Button>
+        </Box>
+        <Snackbar open={snackbarOpen} autoHideDuration={6000} onClose={handleCloseSnackbar} anchorOrigin={{ vertical: 'top', horizontal: 'right' }}>
+          <Alert onClose={handleCloseSnackbar} severity="success" sx={{ width: '100%' }}>
+            User has been deleted!
+          </Alert>
+        </Snackbar>
+      </Container>
+    </Box>
   );
 };
 
