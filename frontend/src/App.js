@@ -14,17 +14,25 @@ import Dashboard from './dashboard/Dashboard';
 import Nav from './components/Nav';
 import Register from './components/Login/Regsiter';
 import Users from './dashboard/users';
-import DashboardTickets from './dashboard/Tickets'; // Renamed import
 import NotFound from './components/pages/NonAdmin';
 import AdminRoutes from './AdminRoutes';
 import AddUser from './dashboard/users/addUser';
 import EditUser from './dashboard/users/editUser';
+import AddTicket from './dashboard/tickets/addTicket'; // Import AddTicket component
+import EditTicket from './dashboard/tickets/editTicket'; // Import EditTicket component
+import TicketManagement from './dashboard/TicketManagement'; // Import TicketManagement component
+import FaqManagement from './dashboard/FaqManagement'; // Import FaqManagement component
+import AddFaq from './dashboard/faq/addFaq'; // Import AddFaq component
+import EditFaq from './dashboard/faq/editFaq'; // Import EditFaq component
+import NewsManagement from './dashboard/NewsManagement'; // Import NewsManagement component
+import AddNews from './dashboard/news/addNews'; // Import AddNews component
+import EditNews from './dashboard/news/editNews'; // Import EditNews component
 
 function App() {
   return (
     <Router>
       <div>
-        <Nav/>
+        <Nav />
         <Layout>
           <Routes>
             <Route path="/" element={<Home />} />
@@ -36,14 +44,21 @@ function App() {
             <Route path="/about" element={<AboutUs />} />
             <Route path="/faq" element={<Faq />} />
             <Route path="/register" element={<Register />} />
-            <Route path='/not-found' element={<NotFound/>}/>
+            <Route path="/not-found" element={<NotFound />} />
             <Route element={<AdminRoutes />}>
               <Route path="/dashboard" element={<Dashboard />} />
-              <Route element={<Users />} path="/users" />
-              <Route element={<AddUser/>} path="/users/add" />
-              <Route element={<EditUser />} path="/users/:id" />
-              <Route element={<News />} path="/news-management" />
-              <Route element={<DashboardTickets />} path="/ticket-management" />
+              <Route path="/users" element={<Users />} />
+              <Route path="/users/add" element={<AddUser />} />
+              <Route path="/users/:id" element={<EditUser />} />
+              <Route path="/news-management" element={<NewsManagement />} /> {/* NewsManagement Route */}
+              <Route path="/ticket-management" element={<TicketManagement />} />
+              <Route path="/ticket-management/add" element={<AddTicket />} /> {/* AddTicket Route */}
+              <Route path="/ticket-management/edit/:id" element={<EditTicket />} /> {/* EditTicket Route */}
+              <Route path="/faq-management" element={<FaqManagement />} /> {/* FaqManagement Route */}
+              <Route path="/faq-management/add" element={<AddFaq />} /> {/* AddFaq Route */}
+              <Route path="/faq-management/edit/:id" element={<EditFaq />} /> {/* EditFaq Route */}
+              <Route path="/news-management/add" element={<AddNews />} /> {/* AddNews Route */}
+              <Route path="/news-management/edit/:id" element={<EditNews />} /> {/* EditNews Route */}
             </Route>
           </Routes>
         </Layout>

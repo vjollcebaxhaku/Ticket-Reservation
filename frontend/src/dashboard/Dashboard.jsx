@@ -92,11 +92,11 @@ const Dashboard = () => {
                 justifyContent: "center",
                 cursor: "pointer",
               }}
-              onClick={() => navigate("/hotel-management")}
+              onClick={() => navigate("/ticket-management")}
             >
               <CardContent>
                 <Typography variant="h4" component="h2">
-                    <LocalActivityIcon fontSize="large" /> Tickets
+                  <LocalActivityIcon fontSize="large" /> Tickets
                 </Typography>
               </CardContent>
             </Card>
@@ -113,7 +113,7 @@ const Dashboard = () => {
                 justifyContent: "center",
                 cursor: "pointer",
               }}
-              onClick={() => navigate("/users")}
+              onClick={() => navigate("/faq-management")} // Navigate to FAQ Management
             >
               <CardContent>
                 <Typography variant="h4" component="h2">
