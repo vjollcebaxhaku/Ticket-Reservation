@@ -2,10 +2,19 @@
 const { PrismaClient } = require('@prisma/client');
 const prisma = new PrismaClient();
 
+const getFaqs = async (req, res) => {
+    try {
+        const faqs = await prisma.fAQ.findMany();
+        res.json(faqs);
+    } catch (error) {
+        res.status(500).json({ error: error.message });
+    }
+};
+
 const createQuestionAndAnswer = async (req, res) => {
     const { question, answer } = req.body;
     try {
-        const newFaq = await prisma.faq.create({
+        const newFaq = await prisma.fAQ.create({
             data: {
                 question,
                 answer
@@ -21,7 +30,7 @@ const updateQuestionAndAnswer = async (req, res) => {
     const { id } = req.params;
     const { question, answer } = req.body;
     try {
-        const updatedFaq = await prisma.faq.update({
+        const updatedFaq = await prisma.fAQ.update({
             where: {
                 id: parseInt(id)
             },
@@ -39,7 +48,7 @@ const updateQuestionAndAnswer = async (req, res) => {
 const deleteQuestionAndAnswer = async (req, res) => {
     const { id } = req.params;
     try {
-        await prisma.faq.delete({
+        await prisma.fAQ.delete({
             where: {
                 id: parseInt(id)
             }
@@ -50,4 +59,4 @@ const deleteQuestionAndAnswer = async (req, res) => {
     }
 };
 
-module.exports = { createQuestionAndAnswer, updateQuestionAndAnswer, deleteQuestionAndAnswer };
+module.exports = { getFaqs, createQuestionAndAnswer, updateQuestionAndAnswer, deleteQuestionAndAnswer };

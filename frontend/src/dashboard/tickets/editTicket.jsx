@@ -12,7 +12,7 @@ const EditTicket = () => {
   useEffect(() => {
     const fetchTicket = async () => {
       try {
-        const response = await axios.get(`/api/tickets/${id}`);
+        const response = await axios.get(`http://localhost:4000/tickets/${id}`);
         setTicket(response.data);
       } catch (error) {
         console.error('Error fetching ticket:', error);

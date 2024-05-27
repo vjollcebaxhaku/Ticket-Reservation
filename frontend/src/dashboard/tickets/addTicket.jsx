@@ -4,19 +4,22 @@ import axios from 'axios';
 import { Container, TextField, Button, Typography, Box, Snackbar, Alert } from '@mui/material';
 
 const AddTicket = () => {
-  const [ticket, setTicket] = useState({ name: '', price: 0, type: '' });
+  const [ticket, setTicket] = useState({ name: '', price: 0, type: '', userId: currentUserId });
   const [snackbarOpen, setSnackbarOpen] = useState(false);
   const navigate = useNavigate();
 
-  const handleChange = (e) => {
-    const { name, value } = e.target;
-    setTicket((prevTicket) => ({ ...prevTicket, [name]: value }));
+  const handleChange = (event) => {
+    const { name, value } = event.target;
+    setTicket((prevTicket) => ({
+      ...prevTicket,
+      [name]: name === "price" ? parseFloat(value) : value
+    }));
   };
 
   const handleSubmit = async (e) => {
     e.preventDefault();
     try {
-      await axios.post('/api/tickets', ticket);
+      await axios.post('http://localhost:4000/tickets', ticket);
       setSnackbarOpen(true);
       navigate('/ticket-management');
     } catch (error) {

@@ -36,10 +36,12 @@ router.delete('/tickets/:id', deleteTicket);
 const {
     createQuestionAndAnswer,
     updateQuestionAndAnswer,
-    deleteQuestionAndAnswer
+    deleteQuestionAndAnswer,
+    getFaqs
 } = require('../controllers/faqControllers');
 
 // FAQ Routes
+router.get('/faq', getFaqs)
 router.post('/faq', createQuestionAndAnswer);
 router.put('/faq/:id', updateQuestionAndAnswer);
 router.delete('/faq/:id', deleteQuestionAndAnswer);

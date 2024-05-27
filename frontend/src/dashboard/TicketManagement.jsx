@@ -14,7 +14,7 @@ const TicketManagement = () => {
 
   const fetchTickets = async () => {
     try {
-      const response = await axios.get('/api/tickets');
+      const response = await axios.get('http://localhost:4000/tickets');
       setTickets(response.data);
       setLoading(false);
     } catch (error) {
@@ -25,7 +25,7 @@ const TicketManagement = () => {
 
   const deleteTicket = async (id) => {
     try {
-      await axios.delete(`/api/tickets/${id}`);
+      await axios.delete(`http://localhost:4000/tickets/${id}`);
       setTickets(tickets.filter(ticket => ticket.id !== id));
       setSnackbarOpen(true);
     } catch (error) {
