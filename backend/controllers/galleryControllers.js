@@ -1,7 +1,7 @@
 const { PrismaClient } = require('@prisma/client');
 const prisma = new PrismaClient();
 
-const getGalleries = async (req, res) => {
+const getGalleryItems = async (req, res) => {
     try {
         const galleries = await prisma.gallery.findMany();
         res.json(galleries);
@@ -9,7 +9,6 @@ const getGalleries = async (req, res) => {
         res.status(500).json({ error: error.message });
     }
 };
-
 
 const getGalleryById = async (req, res) => {
     const { id } = req.params;
@@ -81,4 +80,4 @@ const deleteGallery = async (req, res) => {
     }
 };
 
-module.exports = { getGalleries, getGalleryById, createGallery, updateGallery, deleteGallery };
+module.exports = { getGalleryItems, getGalleryById, createGallery, updateGallery, deleteGallery };

@@ -4,18 +4,18 @@ const router = express.Router();
 // Import Gallery controllers
 const {
     getGalleryItems,
-    createGalleryItem,
-    getGalleryItemById,
-    updateGalleryItem,
-    deleteGalleryItem
+    createGallery,
+    getGalleryById,
+    updateGallery,
+    deleteGallery
 } = require('../controllers/galleryControllers');
 
 // Gallery Routes
 router.get('/gallery', getGalleryItems);
-router.get('/gallery/:id', getGalleryItemById);
-router.post('/gallery', createGalleryItem);
-router.put('/gallery/:id', updateGalleryItem);
-router.delete('/gallery/:id', deleteGalleryItem);
+router.get('/gallery/:id', getGalleryById);
+router.post('/gallery', createGallery);
+router.put('/gallery/:id', updateGallery);
+router.delete('/gallery/:id', deleteGallery);
 
 // Import User controllers
 const {
@@ -60,7 +60,7 @@ const {
 } = require('../controllers/faqControllers');
 
 // FAQ Routes
-router.get('/faq', getFaqs)
+router.get('/faq', getFaqs);
 router.post('/faq', createQuestionAndAnswer);
 router.put('/faq/:id', updateQuestionAndAnswer);
 router.delete('/faq/:id', deleteQuestionAndAnswer);
@@ -75,8 +75,8 @@ const {
 } = require('../controllers/newsControllers');
 
 // News Routes
-router.get('/news', getNews)
-router.get('/news/:id', getNewsById)
+router.get('/news', getNews);
+router.get('/news/:id', getNewsById);
 router.post('/news', createNews);
 router.put('/news/:id', updateNews);
 router.delete('/news/:id', deleteNews);
