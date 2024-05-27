@@ -9,13 +9,13 @@ function Tickets() {
   return (
     <>
       <Nav />
-      <Layout pictureSrc={ticketPic}>
+      <Layout pictureSrc={ticketPic} contentStyle={{ paddingTop: '80px' }}>
         <section className="text-center mt-20 relative">
           <div className="flex justify-center">
             <div className="mr-4 p-4">
               <p className="text-3xl font-bold text-purple-800 tracking-wide font-mono">Believers</p>
               <p className="text-4xl font-bold text-gray-500 tracking-wide font-mono mt-6">100€</p>
-              <Link to="/ticket-purchase" target="_blank"> {/* Use target="_blank" to open in new tab */}
+              <Link to="/ticket-purchase" target="_blank">
                 <button className="bg-purple-800 text-black font-mono rounded-sm px-10 py-2 text-custom mt-4">BUY NOW</button>
               </Link>
             </div>
@@ -27,7 +27,7 @@ function Tickets() {
             <div className="ml-3 p-4">
               <p className="text-3xl font-bold text-purple-800 tracking-wide font-mono">Early-Bird</p>
               <p className="text-4xl font-bold text-gray-500 tracking-wide font-mono mt-6">150€</p>
-              <Link to="/ticket-purchase" target="_blank"> {/* Use target="_blank" to open in new tab */}
+              <Link to="/ticket-purchase" target="_blank">
                 <button className="bg-purple-800 text-black font-mono rounded-sm px-10 py-2 text-custom mt-4">BUY NOW</button>
               </Link>
             </div>

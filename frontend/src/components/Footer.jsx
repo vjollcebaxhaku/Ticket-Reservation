@@ -28,14 +28,14 @@ function Footer() {
             >
                 <Box>
                     <ul style={{ listStyle: 'none', padding: 0, margin: 0 }}>
-                        <li style={{ marginBottom: '16px' }}>
-                            <Link href="#" color="white" underline="hover" sx={{ fontWeight: 'bold', fontSize: '18px', fontFamily: 'Roboto Mono, monospace' }}>VOLUNTEER</Link>
+                        <li>
+                            <Link href="#" color="white" underline="hover" sx={{ fontWeight: 'bold', fontSize: '18px', fontFamily: 'Roboto Mono, monospace', padding: 0, margin: 0 }}>VOLUNTEER</Link>
                         </li>
-                        <li style={{ marginBottom: '16px' }}>
-                            <Link href="#" color="white" underline="hover" sx={{ fontWeight: 'bold', fontSize: '18px', fontFamily: 'Roboto Mono, monospace' }}>PRIVACY POLICY</Link>
+                        <li>
+                            <Link href="#" color="white" underline="hover" sx={{ fontWeight: 'bold', fontSize: '18px', fontFamily: 'Roboto Mono, monospace', padding: 0, margin: 0 }}>PRIVACY POLICY</Link>
                         </li>
-                        <li style={{ marginBottom: '16px' }}>
-                            <Link href="#" color="white" underline="hover" sx={{ fontWeight: 'bold', fontSize: '18px', fontFamily: 'Roboto Mono, monospace' }}>TERMS OF USE</Link>
+                        <li>
+                            <Link href="#" color="white" underline="hover" sx={{ fontWeight: 'bold', fontSize: '18px', fontFamily: 'Roboto Mono, monospace', padding: 0, margin: 0 }}>TERMS OF USE</Link>
                         </li>
                     </ul>
                 </Box>
