@@ -6,7 +6,6 @@ import Gallery from './components/pages/Gallery';
 import Layout from './components/Layout';
 import Lineup from './components/pages/Lineup';
 import News from './components/pages/News';
-import Footer from './components/Footer';
 import AboutUs from './components/pages/AboutUs';
 import Faq from './components/pages/Faq';
 import Login from './components/Login/Login';
@@ -32,40 +31,34 @@ import TicketPurchase from './components/pages/TicketPurchase'; // Import Ticket
 function App() {
   return (
     <Router>
-      <div>
-        <Nav />
-        <Layout>
-          <Routes>
-            <Route path="/" element={<Home />} />
-            <Route path="/tickets" element={<PageTickets />} />
-            <Route path="/gallery" element={<Gallery />} />
-            <Route path="/line-up" element={<Lineup />} />
-            <Route path="/news" element={<News />} />
-            <Route path="/login" element={<Login />} />
-            <Route path="/about" element={<AboutUs />} />
-            <Route path="/faq" element={<Faq />} />
-            <Route path="/register" element={<Register />} />
-            <Route path="/not-found" element={<NotFound />} />
-            <Route path="/ticket-purchase" element={<TicketPurchase />} /> {/* Add route for TicketPurchase */}
-            <Route element={<AdminRoutes />}>
-              <Route path="/dashboard" element={<Dashboard />} />
-              <Route path="/users" element={<Users />} />
-              <Route path="/users/add" element={<AddUser />} />
-              <Route path="/users/:id" element={<EditUser />} />
-              <Route path="/news-management" element={<NewsManagement />} /> {/* NewsManagement Route */}
-              <Route path="/ticket-management" element={<TicketManagement />} />
-              <Route path="/ticket-management/add" element={<AddTicket />} /> {/* AddTicket Route */}
-              <Route path="/ticket-management/edit/:id" element={<EditTicket />} /> {/* EditTicket Route */}
-              <Route path="/faq-management" element={<FaqManagement />} /> {/* FaqManagement Route */}
-              <Route path="/faq-management/add" element={<AddFaq />} /> {/* AddFaq Route */}
-              <Route path="/faq-management/edit/:id" element={<EditFaq />} /> {/* EditFaq Route */}
-              <Route path="/news-management/add" element={<AddNews />} /> {/* AddNews Route */}
-              <Route path="/news-management/edit/:id" element={<EditNews />} /> {/* EditNews Route */}
-            </Route>
-          </Routes>
-        </Layout>
-        <Footer />
-      </div>
+      <Routes>
+        <Route path="/" element={<Home />} />
+        <Route path="/tickets" element={<PageTickets />} />
+        <Route path="/gallery" element={<Gallery />} />
+        <Route path="/line-up" element={<Lineup />} />
+        <Route path="/news" element={<News />} />
+        <Route path="/login" element={<Login />} />
+        <Route path="/about" element={<AboutUs />} />
+        <Route path="/faq" element={<Faq />} />
+        <Route path="/register" element={<Register />} />
+        <Route path="/not-found" element={<NotFound />} />
+        <Route path="/ticket-purchase" element={<TicketPurchase />} /> {/* Add route for TicketPurchase */}
+        <Route element={<AdminRoutes />}>
+          <Route path="/dashboard" element={<Dashboard />} />
+          <Route path="/users" element={<Users />} />
+          <Route path="/users/add" element={<AddUser />} />
+          <Route path="/users/:id" element={<EditUser />} />
+          <Route path="/news-management" element={<NewsManagement />} /> {/* NewsManagement Route */}
+          <Route path="/ticket-management" element={<TicketManagement />} />
+          <Route path="/ticket-management/add" element={<AddTicket />} /> {/* AddTicket Route */}
+          <Route path="/ticket-management/edit/:id" element={<EditTicket />} /> {/* EditTicket Route */}
+          <Route path="/faq-management" element={<FaqManagement />} /> {/* FaqManagement Route */}
+          <Route path="/faq-management/add" element={<AddFaq />} /> {/* AddFaq Route */}
+          <Route path="/faq-management/edit/:id" element={<EditFaq />} /> {/* EditFaq Route */}
+          <Route path="/news-management/add" element={<AddNews />} /> {/* AddNews Route */}
+          <Route path="/news-management/edit/:id" element={<EditNews />} /> {/* EditNews Route */}
+        </Route>
+      </Routes>
     </Router>
   );
 }

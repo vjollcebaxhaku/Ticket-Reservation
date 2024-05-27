@@ -1,4 +1,6 @@
 import React, { useState } from 'react';
+import Nav from '../Nav'; // Import Nav component
+import Footer from '../Footer'; // Import Footer component
 import Layout from '../Layout';
 import Slider from '../Slider';
 import galleryPic from './pictures/pic5.png'; 
@@ -15,28 +17,32 @@ function News() {
   };
 
   return (
-    <Layout pictureSrc={galleryPic}>
-      <Slider />
-      <section>
-        <div>
-          {newsList.map((news) => (
-            <div key={news.id} className="mb-0">
-              <button
-                className={`text-left w-full bg-white text-gray-500 font-bold font-mono py-4 px-6 rounded-lg text-xl relative focus:outline-none transition-colors duration-300 hover:bg-green-200 ${selectedNews === news.id ? 'bg-green-100' : ''}`}
-                onClick={() => handleNewsClick(news.id)}
-              >
-                {news.title}
-              </button>
-              {selectedNews === news.id && (
-                <div className="bg-white text-black font-mono border-l border-r border-b border-green-500 py-3 px-4 text-lg">
-                  This is the detailed news content...
-                </div>
-              )}
-            </div>
-          ))}
-        </div>
-      </section>
-    </Layout>
+    <>
+      <Nav /> {/* Include the Nav component */}
+      <Layout pictureSrc={galleryPic}>
+        <Slider />
+        <section>
+          <div>
+            {newsList.map((news) => (
+              <div key={news.id} className="mb-0">
+                <button
+                  className={`text-left w-full bg-white text-gray-500 font-bold font-mono py-4 px-6 rounded-lg text-xl relative focus:outline-none transition-colors duration-300 hover:bg-green-200 ${selectedNews === news.id ? 'bg-green-100' : ''}`}
+                  onClick={() => handleNewsClick(news.id)}
+                >
+                  {news.title}
+                </button>
+                {selectedNews === news.id && (
+                  <div className="bg-white text-black font-mono border-l border-r border-b border-green-500 py-3 px-4 text-lg">
+                    This is the detailed news content...
+                  </div>
+                )}
+              </div>
+            ))}
+          </div>
+        </section>
+      </Layout>
+      <Footer /> {/* Include the Footer component */}
+    </>
   );
 }
 

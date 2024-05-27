@@ -27,12 +27,12 @@ const AddUser = () => {
         alignItems: 'center', 
         justifyContent: 'center', 
         minHeight: '100vh', 
-        bgcolor: 'background.default', 
+        bgcolor: '#f5f5f5', // Set background color to grey
         color: 'text.primary', 
         py: 4 
       }}
     >
-      <Typography variant="h3" component="h2" gutterBottom>
+      <Typography variant="h3" component="h2" gutterBottom sx={{ fontFamily: "'Roboto Mono', monospace", color: 'black' }}>
         Add User
       </Typography>
       <Box 
@@ -75,7 +75,13 @@ const AddUser = () => {
         <Button 
           type="submit" 
           variant="contained" 
-          color="primary" 
+          sx={{ 
+            backgroundColor: '#FF69B4', // Set button background color
+            color: 'black', // Set button text color
+            textTransform: 'uppercase', 
+            fontFamily: "'Roboto Mono', monospace", 
+            fontSize: '16px', // Set button font size
+          }}
           fullWidth
         >
           Add User

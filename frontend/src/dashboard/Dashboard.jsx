@@ -14,12 +14,14 @@ import { useNavigate } from "react-router-dom";
 import LocalActivityIcon from "@mui/icons-material/LocalActivity";
 import EventIcon from "@mui/icons-material/Event";
 import MonetizationOnIcon from "@mui/icons-material/MonetizationOn";
+import Sidebar from './Sidebar'; // Import Sidebar component
 
 const Dashboard = () => {
   const navigate = useNavigate();
 
   return (
     <>
+      <Sidebar /> {/* Include the Sidebar component */}
       <AppBar
         position="static"
         sx={{ height: "100px", backgroundColor: "#fff", paddingTop: "120px" }} // Added padding top
