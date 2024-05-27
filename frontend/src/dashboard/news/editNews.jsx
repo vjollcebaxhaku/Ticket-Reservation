@@ -8,12 +8,14 @@ const EditNews = () => {
   const navigate = useNavigate();
   const [title, setTitle] = useState('');
   const [content, setContent] = useState('');
+  const [publishedAt, setPublishedAt] = useState()
 
   useEffect(() => {
     const fetchNews = async () => {
       try {
         const response = await axios.get(`http://localhost:4000/news/${id}`);
-        const { title, content } = response.data;
+        const { title, content, publishedAt } = response.data;
+        setPublishedAt(publishedAt)
         setTitle(title);
         setContent(content);
       } catch (error) {
@@ -27,7 +29,7 @@ const EditNews = () => {
   const handleSubmit = async (e) => {
     e.preventDefault();
     try {
-      await axios.put(`http://localhost:4000/news/${id}`, { title, content });
+      await axios.put(`http://localhost:4000/news/${id}`, { title, content, publishedAt });
       navigate('/news-management');
     } catch (error) {
       console.error('Error updating News:', error);

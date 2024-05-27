@@ -49,10 +49,14 @@ router.delete('/faq/:id', deleteQuestionAndAnswer);
 const {
     createNews,
     updateNews,
-    deleteNews
+    deleteNews,
+    getNews,
+    getNewsById
 } = require('../controllers/newsControllers');
 
 // News Routes
+router.get('/news', getNews)
+router.get('/news/:id', getNewsById)
 router.post('/news', createNews);
 router.put('/news/:id', updateNews);
 router.delete('/news/:id', deleteNews);

@@ -12,7 +12,8 @@ const AddNews = () => {
   const handleSubmit = async (e) => {
     e.preventDefault();
     try {
-      await axios.post('http://localhost:4000/news', { title, content });
+      const currentDate = new Date().toISOString();
+      await axios.post('http://localhost:4000/news', { title, content, publishedAt: currentDate });
       navigate('/news-management');
     } catch (error) {
       console.error('Error adding news:', error);
