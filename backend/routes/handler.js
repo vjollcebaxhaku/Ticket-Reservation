@@ -1,6 +1,23 @@
 const express = require('express');
 const router = express.Router();
 
+// Import Gallery controllers
+const {
+    getGalleryItems,
+    createGalleryItem,
+    getGalleryItemById,
+    updateGalleryItem,
+    deleteGalleryItem
+} = require('../controllers/galleryControllers');
+
+// Gallery Routes
+router.get('/gallery', getGalleryItems);
+router.get('/gallery/:id', getGalleryItemById);
+router.post('/gallery', createGalleryItem);
+router.put('/gallery/:id', updateGalleryItem);
+router.delete('/gallery/:id', deleteGalleryItem);
+
+// Import User controllers
 const {
     getUsers,
     createUser,
@@ -18,6 +35,7 @@ router.put('/users/:id', updateUser);
 router.delete('/users/:id', deleteUser);
 router.post('/login', loginUser);
 
+// Import Ticket controllers
 const {
     getTickets,
     createTicket,
@@ -33,6 +51,7 @@ router.get('/tickets/:id', getTicketById);
 router.put('/tickets/:id', updateTicket);
 router.delete('/tickets/:id', deleteTicket);
 
+// Import FAQ controllers
 const {
     createQuestionAndAnswer,
     updateQuestionAndAnswer,
@@ -46,6 +65,7 @@ router.post('/faq', createQuestionAndAnswer);
 router.put('/faq/:id', updateQuestionAndAnswer);
 router.delete('/faq/:id', deleteQuestionAndAnswer);
 
+// Import News controllers
 const {
     createNews,
     updateNews,

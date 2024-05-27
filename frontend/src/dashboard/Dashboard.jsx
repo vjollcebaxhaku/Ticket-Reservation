@@ -148,11 +148,11 @@ const Dashboard = () => {
                 cursor: "pointer",
                 border: "2px solid #000",
               }}
-              onClick={() => navigate("/line-up")}
+              onClick={() => navigate("/gallery-management")}
             >
               <CardContent>
                 <Typography variant="h5" component="h2" sx={{ fontFamily: "'Roboto Mono', monospace", textTransform: 'uppercase' }}>
-                  <EventIcon fontSize="large" /> LINE-UP
+                  <EventIcon fontSize="large" /> GALLERY
                 </Typography>
               </CardContent>
             </Card>

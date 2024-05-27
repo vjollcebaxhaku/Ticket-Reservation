@@ -1,5 +1,6 @@
 import React, { useState } from 'react';
 import earlyBirdImage from './pictures/earlybird.png'; // Importing the earlybird.png image
+import believer from './pictures/believer.png'; // Importing the earlybird.png image
 
 function TicketPurchase() {
   const ticketPriceEarlyBird = 150.00; // Price per ticket for Early Bird
@@ -71,7 +72,7 @@ function TicketPurchase() {
       
       {/* Believer Box */}
       <div className="max-w-xl mx-auto bg-gray-100 rounded-lg overflow-hidden shadow-lg mb-8">
-        <img src={earlyBirdImage} alt="Early Bird" className="w-full" />
+        <img src={believer} alt="believer" className="w-full" />
         <div className="p-8 flex justify-between items-start">
           <div>
             <h2 className="text-2xl font-bold font-mono text-black mb-4">Believer</h2>
