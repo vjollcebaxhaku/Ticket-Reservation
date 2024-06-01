@@ -148,7 +148,7 @@ const Dashboard = () => {
                 cursor: "pointer",
                 border: "2px solid #000",
               }}
-              onClick={() => navigate("/Lineup")}
+              onClick={() => navigate("/ lineup-management")}
             >
               <CardContent>
                 <Typography variant="h5" component="h2" sx={{ fontFamily: "'Roboto Mono', monospace", textTransform: 'uppercase' }}>

@@ -1,8 +1,10 @@
 import React, { useState, useEffect } from 'react';
 import axios from 'axios';
 import { Box, Button, Table, TableBody, TableCell, TableContainer, TableHead, TableRow, TextField, Typography } from '@mui/material';
+import { useNavigate } from 'react-router-dom'; // Importo useNavigate nga react-router-dom
 
 function Lineup() {
+  const navigate = useNavigate(); // Inicializo useNavigate
   const [name, setName] = useState('');
   const [year, setYear] = useState('');
   const [festivals, setFestivals] = useState([]);
@@ -49,10 +51,16 @@ function Lineup() {
       });
   };
 
+  const handleGoToDashboard = () => {
+    navigate('/dashboard'); // Drejto në faqen e dashboardit kur klikohet
+  };
+
   return (
     <Box>
       <Typography variant="h4">Lineup</Typography>
+      <Button variant="outlined" onClick={handleGoToDashboard}>Go to Dashboard</Button> {}
       <Box>
+        
         <TextField
           label="Festival Name"
           value={name}

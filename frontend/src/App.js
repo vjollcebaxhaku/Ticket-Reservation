@@ -32,6 +32,8 @@ import Pr22 from './components/pages/lineuppages/pr22'; // Corrected path
 import Tr22 from './components/pages/lineuppages/tr22'; // Corrected path
 import Pr19 from './components/pages/lineuppages/pr19'; // Corrected path
 import Pr18 from './components/pages/lineuppages/pr18'; // Corrected path
+<Route path="/lineup-management" element={<Lineup />} />
+
 
 function App() {
   return (

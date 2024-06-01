@@ -1,11 +1,11 @@
 import React, { useEffect, useState } from 'react';
 import { useNavigate } from 'react-router-dom';
-import Nav from '../Nav'; // Update import path for Nav component
-import Footer from '../Footer'; // Update import path for Footer component
+import Nav from '../Nav'; // Përditëso shtegun për komponentin Nav
+import Footer from '../Footer'; // Përditëso shtegun për komponentin Footer
 import Layout from '../Layout';
 import Slider from '../Slider';
 import lineupPic from './pictures/pic4.png'; 
-import axios from 'axios'; // Import axios for API requests
+import axios from 'axios'; // Importo axios për kërkesa API
 import { Box, Typography } from '@mui/material';
 
 function Lineup() {
@@ -18,26 +18,8 @@ function Lineup() {
       .catch(error => console.error(error));
   }, []);
 
-  const handleClick = (year) => {
-    switch (year) {
-      case 'PRISHTINA 2024':
-        navigate('/lineuppages/pr24');
-        break;
-      case 'PRISHTINA 2022':
-        navigate('/lineuppages/pr22');
-        break;
-      case 'TIRANA 2022':
-        navigate('/lineuppages/tr22');
-        break;
-      case 'PRISHTINA 2019':
-        navigate('/lineuppages/pr19');
-        break;
-      case 'PRISHTINA 2018':
-        navigate('/lineuppages/pr18');
-        break;
-      default:
-        break;
-    }
+  const handleClick = (id) => {
+    navigate(`/lineuppages/${id}`);
   };
 
   const imageContainerStyle = {
@@ -52,7 +34,7 @@ function Lineup() {
 
   return (
     <>
-      <Nav festivals={festivals} /> {/* Include the Nav component with festivals passed as prop */}
+      <Nav festivals={festivals} /> {/* Përfshi komponentin Nav me festivals si prop */}
       <Layout pictureSrc={lineupPic} contentStyle={contentStyle}>
         <Slider />
         <section>
@@ -63,17 +45,17 @@ function Lineup() {
       <Box
         sx={{
           backgroundColor: 'lightgray',
-          height: '75px', // Ensure the height matches the Slider
+          height: '75px', // Sigurohu që lartësia përputhet me Slider
           display: 'flex',
           alignItems: 'center',
-          justifyContent: 'space-around', // Adjust the spacing as needed
+          justifyContent: 'space-around', // Rregullo hapësirën siç është e nevojshme
         }}
       >
-        {['PRISHTINA 2024', 'PRISHTINA 2022', 'TIRANA 2022', 'PRISHTINA 2019', 'PRISHTINA 2018'].map((year) => (
+        {festivals.map(festival => (
           <Typography
-            key={year}
+            key={festival.id}
             variant="h6"
-            onClick={() => handleClick(year)}
+            onClick={() => handleClick(festival.id)}
             sx={{
               fontWeight: 'bold',
               textTransform: 'uppercase',
@@ -82,15 +64,15 @@ function Lineup() {
               fontFamily: 'Roboto Mono, monospace',
               cursor: 'pointer',
               '&:hover': {
-                color: '#db2d84', // Change text color to pink on hover
+                color: '#db2d84', // Ndrysho ngjyrën e tekstit në rozë kur është mbi
               },
             }}
           >
-            {year}
+            {`${festival.name} ${festival.year}`}
           </Typography>
         ))}
       </Box>
-      <Footer /> {/* Include the Footer component */}
+      <Footer /> {/* Përfshi komponentin Footer */}
     </>
   );
 }

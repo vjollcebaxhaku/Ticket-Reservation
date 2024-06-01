@@ -61,4 +61,20 @@ router.post('/news', createNews);
 router.put('/news/:id', updateNews);
 router.delete('/news/:id', deleteNews);
 
+
+const {
+    getFestivals,
+    createFestival,
+    getFestivalById,
+    updateFestival,
+    deleteFestival
+} = require('../controllers/festivalControllers');
+
+// Festival Routes
+router.get('/festivals', getFestivals);
+router.post('/festivals', createFestival);
+router.get('/festivals/:id', getFestivalById);
+router.put('/festivals/:id', updateFestival);
+router.delete('/festivals/:id', deleteFestival);
+
 module.exports = router;
