@@ -6,6 +6,7 @@ import Layout from '../Layout';
 import Slider from '../Slider';
 import galleryPic from './pictures/pic5.png';
 import { Box, Typography, Button } from '@mui/material';
+import burnaPic from './pictures/burna1.jpg'; // Import the image
 
 function News() {
   const [news, setNews] = useState([]);
@@ -47,8 +48,11 @@ function News() {
             {article.content}
           </Typography>
           <Typography variant="body1" sx={{ color: 'black', fontFamily: 'Roboto Mono, monospace', marginTop: '10px' }}>
-            <a href={article.url} target="_blank" rel="noopener noreferrer">{article.url}</a>
+            Read more here: <a href={article.url} target="_blank" rel="noopener noreferrer">{article.url}</a>
           </Typography>
+        </div>
+        <div style={{ flex: '1', paddingLeft: '20px' }}>
+          <img src={burnaPic} alt="Burna Boy" style={{ width: '100%', maxHeight: '300px', objectFit: 'cover' }} />
         </div>
       </Box>
     </>

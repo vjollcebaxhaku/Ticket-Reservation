@@ -1,3 +1,4 @@
+import FileUpload from "express-fileupload";
 const express = require('express');
 const bodyParser = require('body-parser');
 const routesHandler = require('./routes/handler.js');
@@ -8,6 +9,7 @@ const app = express();
 // Parse incoming requests with JSON payloads
 app.use(bodyParser.urlencoded({ extended: false }));
 app.use(bodyParser.json());
+app.use(FileUpload());
 
 const corsOptions = {
   origin: 'http://localhost:3000',

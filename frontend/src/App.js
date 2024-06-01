@@ -24,13 +24,14 @@ import FaqManagement from './dashboard/FaqManagement'; // Import FaqManagement c
 import AddFaq from './dashboard/faq/addFaq'; // Import AddFaq component
 import EditFaq from './dashboard/faq/editFaq'; // Import EditFaq component
 import NewsManagement from './dashboard/NewsManagement'; // Import NewsManagement component
-import GalleryManagement from './dashboard/GalleryManagement'; // Import NewsManagement component
 import AddNews from './dashboard/news/addNews'; // Import AddNews component
 import EditNews from './dashboard/news/editNews'; // Import EditNews component
 import TicketPurchase from './components/pages/TicketPurchase'; // Import TicketPurchase component
-import AddGallery from './dashboard/gallery/addGallery'; // Import AddNews component
-import EditGallery from './dashboard/gallery/editGallery'; // Import AddNews component
-
+import Pr24 from './components/pages/lineuppages/pr24'; // Corrected path
+import Pr22 from './components/pages/lineuppages/pr22'; // Corrected path
+import Tr22 from './components/pages/lineuppages/tr22'; // Corrected path
+import Pr19 from './components/pages/lineuppages/pr19'; // Corrected path
+import Pr18 from './components/pages/lineuppages/pr18'; // Corrected path
 
 function App() {
   return (
@@ -47,6 +48,11 @@ function App() {
         <Route path="/register" element={<Register />} />
         <Route path="/not-found" element={<NotFound />} />
         <Route path="/ticket-purchase" element={<TicketPurchase />} /> {/* Add route for TicketPurchase */}
+        <Route path="/lineuppages/pr24" element={<Pr24 />} /> {/* Corrected path */}
+        <Route path="/lineuppages/pr22" element={<Pr22 />} /> {/* Corrected path */}
+        <Route path="/lineuppages/tr22" element={<Tr22 />} /> {/* Corrected path */}
+        <Route path="/lineuppages/pr19" element={<Pr19 />} /> {/* Corrected path */}
+        <Route path="/lineuppages/pr18" element={<Pr18 />} /> {/* Corrected path */}
         <Route element={<AdminRoutes />}>
           <Route path="/dashboard" element={<Dashboard />} />
           <Route path="/users" element={<Users />} />
@@ -61,9 +67,6 @@ function App() {
           <Route path="/faq-management/edit/:id" element={<EditFaq />} /> {/* EditFaq Route */}
           <Route path="/news-management/add" element={<AddNews />} /> {/* AddNews Route */}
           <Route path="/news-management/edit/:id" element={<EditNews />} /> {/* EditNews Route */}
-          <Route path="/gallery-management" element={<GalleryManagement />} />
-          <Route path="/gallery-management/add" element={<AddGallery />} /> {/* AddNews Route */}
-          <Route path="/gallery-management/edit" element={<EditGallery />} /> {/* AddNews Route */}
         </Route>
       </Routes>
     </Router>
