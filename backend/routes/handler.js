@@ -41,7 +41,7 @@ const {
 } = require('../controllers/faqControllers');
 
 // FAQ Routes
-router.get('/faq', getFaqs)
+router.get('/faq', getFaqs);
 router.post('/faq', createQuestionAndAnswer);
 router.put('/faq/:id', updateQuestionAndAnswer);
 router.delete('/faq/:id', deleteQuestionAndAnswer);
@@ -55,8 +55,8 @@ const {
 } = require('../controllers/newsControllers');
 
 // News Routes
-router.get('/news', getNews)
-router.get('/news/:id', getNewsById)
+router.get('/news', getNews);
+router.get('/news/:id', getNewsById);
 router.post('/news', createNews);
 router.put('/news/:id', updateNews);
 router.delete('/news/:id', deleteNews);
