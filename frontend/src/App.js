@@ -25,11 +25,13 @@ import AddFaq from './dashboard/faq/addFaq'; // Import AddFaq component
 import EditFaq from './dashboard/faq/editFaq'; // Import EditFaq component
 import NewsManagement from './dashboard/NewsManagement'; // Import NewsManagement component
 import GalleryManagement from './dashboard/GalleryManagement'; // Import NewsManagement component
+import RolesManagement from './dashboard/RolesManagement'; // Import NewsManagement component
 import AddNews from './dashboard/news/addNews'; // Import AddNews component
 import EditNews from './dashboard/news/editNews'; // Import EditNews component
 import TicketPurchase from './components/pages/TicketPurchase'; // Import TicketPurchase component
 import AddGallery from './dashboard/gallery/addGallery'; // Import AddNews component
 import EditGallery from './dashboard/gallery/editGallery'; // Import AddNews component
+
 
 
 function App() {
@@ -62,6 +64,7 @@ function App() {
           <Route path="/news-management/add" element={<AddNews />} /> {/* AddNews Route */}
           <Route path="/news-management/edit/:id" element={<EditNews />} /> {/* EditNews Route */}
           <Route path="/gallery-management" element={<GalleryManagement />} />
+          <Route path="/roles-management" element={<RolesManagement />} />
           <Route path="/gallery-management/add" element={<AddGallery />} /> {/* AddNews Route */}
           <Route path="/gallery-management/edit" element={<EditGallery />} /> {/* AddNews Route */}
         </Route>

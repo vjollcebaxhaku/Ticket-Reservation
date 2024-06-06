@@ -9,36 +9,18 @@ const Sidebar = ({ openSidebarToggle, OpenSidebar }) => {
       </div>
       <ul className='sidebar-list' style={{ listStyleType: 'none', display: 'flex', alignItems: 'center', padding: 0 }}>
         <li className='sidebar-list-item' style={{ margin: '0 10px' }}>
-          {/* Changed anchor tag to Link */}
           <Link to="/home" style={{ color: '#008000', textDecoration: 'none', fontWeight: 'bold', fontSize: '16px', display: 'flex', alignItems: 'center' }}>
             <BsGrid1X2Fill className='icon' style={{ marginRight: '10px', marginLeft: '5px' }} />
             <span>HOMEPAGE</span>
           </Link>
         </li>
         <li className='sidebar-list-item' style={{ margin: '0 10px' }}>
-          <a href="" style={{ color: '#008000', textDecoration: 'none', fontWeight: 'bold', fontSize: '16px', display: 'flex', alignItems: 'center' }}>
+          <Link to="/roles" style={{ color: '#008000', textDecoration: 'none', fontWeight: 'bold', fontSize: '16px', display: 'flex', alignItems: 'center' }}>
             <BsPeopleFill className='icon' style={{ marginRight: '10px', marginLeft: '5px' }} />
             <span>ROLES</span>
-          </a>
+          </Link>
         </li>
-        <li className='sidebar-list-item' style={{ margin: '0 10px' }}>
-          <a href="" style={{ color: '#008000', textDecoration: 'none', fontWeight: 'bold', fontSize: '16px', display: 'flex', alignItems: 'center' }}>
-            <BsListCheck className='icon' style={{ marginRight: '10px', marginLeft: '5px' }} />
-            <span>INVENTORY</span>
-          </a>
-        </li>
-        <li className='sidebar-list-item' style={{ margin: '0 10px' }}>
-          <a href="" style={{ color: '#008000', textDecoration: 'none', fontWeight: 'bold', fontSize: '16px', display: 'flex', alignItems: 'center' }}>
-            <BsMenuButtonWideFill className='icon' style={{ marginRight: '10px', marginLeft: '5px' }} />
-            <span>REPORTS</span>
-          </a>
-        </li>
-        <li className='sidebar-list-item' style={{ margin: '0 10px' }}>
-          <a href="" style={{ color: '#008000', textDecoration: 'none', fontWeight: 'bold', fontSize: '16px', display: 'flex', alignItems: 'center' }}>
-            <BsFillGearFill className='icon' style={{ marginRight: '10px', marginLeft: '5px' }} />
-            <span>SETTINGS</span>
-          </a>
-        </li>
+        {/* Other sidebar items */}
       </ul>
       <span className='icon close_icon' style={{ color: '#008000', cursor: 'pointer' }} onClick={OpenSidebar}></span>
     </aside>

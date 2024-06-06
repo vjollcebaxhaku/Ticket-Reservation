@@ -26,20 +26,15 @@ function TicketPurchase() {
     }
   };
 
-  const handleCheckout = () => {
-    // Redirect to checkout page with selected ticket amounts
-    console.log(`Redirecting to checkout for Early Bird with ${ticketAmountEarlyBird} ticket(s) and Believer with ${ticketAmountBeliever} ticket(s)`);
-  };
-
   const totalPriceEarlyBird = (ticketAmountEarlyBird * ticketPriceEarlyBird) + (ticketAmountEarlyBird * bookingFee);
   const totalPriceBeliever = (ticketAmountBeliever * ticketPriceBeliever) + (ticketAmountBeliever * bookingFee);
 
   return (
     <div className="container mx-auto mt-20 py-20">
         <div className="container text-center">
-  <h1 className="text-black text-3xl font-bold font-mono mb-4">Tickets</h1>
-  <h2 className="text-black text-xl font-bold font-mono mb-8">Securely purchase and receive your event tickets</h2>
-    </div>
+          <h1 className="text-black text-3xl font-bold font-mono mb-4">Tickets</h1>
+          <h2 className="text-black text-xl font-bold font-mono mb-8">Securely purchase and receive your event tickets</h2>
+        </div>
       <div className="max-w-xl mx-auto bg-gray-100 rounded-lg overflow-hidden shadow-lg mb-8">
         <img src={earlyBirdImage} alt="Early Bird" className="w-full" />
         <div className="p-8 flex justify-between items-start">
@@ -104,12 +99,12 @@ function TicketPurchase() {
       {/* Checkout Button */}
       {showCheckout && (
         <footer className="p-4 bg-orange-500 text-center rounded-b-lg">
-          <button
+          <a
+            href="/login"
             className="bg-orange-500 text-white font-mono rounded-md px-6 py-2 text-lg"
-            onClick={handleCheckout}
           >
             CHECKOUT ({(totalPriceEarlyBird + totalPriceBeliever).toFixed(2)} €)
-          </button>
+          </a>
         </footer>
       )}
     </div>
