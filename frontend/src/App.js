@@ -39,7 +39,7 @@ function App() {
     <Router>
       <Routes>
         <Route path="/" element={<Home />} />
-        <Route path="/tickets" element={<PageTickets />} />
+        <Route path="/tickets" element={<PageTickets />} />{/* ticket Route */}
         <Route path="/gallery" element={<Gallery />} />
         <Route path="/line-up" element={<Lineup />} />
         <Route path="/news" element={<News />} />
