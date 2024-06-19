@@ -37,14 +37,6 @@ model Ticket {
   user      User     @relation(fields: [userId], references: [id])
 }
 
-model Lineup {
-  id           Int      @id @default(autoincrement())
-  artistName   String
-  genre        String
-  description  String
-  imageUrl     String
-}
-
 model News {
   id          Int      @id @default(autoincrement())
   title       String
@@ -68,4 +60,20 @@ model FAQ {
 
 
 
+model Lineup {
+  id          Int      @id @default(autoincrement())
+  artistName  String
+  genre       String
+  description String
+  imageUrl    String
+  concertID   Int
+  concert     Concert  @relation(fields: [concertID], references: [id])
+}
 
+model Concert {
+  id       Int      @id @default(autoincrement())
+  name     String
+  year     Int
+  location String
+  lineups  Lineup[]
+}

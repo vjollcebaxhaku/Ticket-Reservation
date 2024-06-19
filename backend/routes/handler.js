@@ -17,6 +17,8 @@ router.post('/gallery', createGallery);
 router.put('/gallery/:id', updateGallery);
 router.delete('/gallery/:id', deleteGallery);
 
+
+
 // Import User controllers
 const {
     getUsers,
@@ -80,5 +82,19 @@ router.get('/news/:id', getNewsById);
 router.post('/news', createNews);
 router.put('/news/:id', updateNews);
 router.delete('/news/:id', deleteNews);
+
+const lineupController = require('../controllers/lineupController');
+const concertController = require('../controllers/concertController');
+
+router.post('/concert', concertController.createConcert);
+router.get('/concert/:id', concertController.getConcert);
+router.put('/concert/:id', concertController.updateConcert);
+router.delete('/concert/:id', concertController.deleteConcert);
+
+// Lineup routes
+router.post('/lineup', lineupController.createLineup);
+router.get('/lineup/:id', lineupController.getLineup);
+router.put('/lineup/:id', lineupController.updateLineup);
+router.delete('/lineup/:id', lineupController.deleteLineup);
 
 module.exports = router;

@@ -31,6 +31,7 @@ import EditNews from './dashboard/news/editNews'; // Import EditNews component
 import TicketPurchase from './components/pages/TicketPurchase'; // Import TicketPurchase component
 import AddGallery from './dashboard/gallery/addGallery'; // Import AddNews component
 import EditGallery from './dashboard/gallery/editGallery'; // Import AddNews component
+import { VerifiedTwoTone } from '@mui/icons-material';
 
 
 
@@ -74,3 +75,4 @@ function App() {
 }
 
 export default App;
+ qo
