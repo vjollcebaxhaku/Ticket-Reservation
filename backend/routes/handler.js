@@ -93,6 +93,7 @@ router.delete('/concert/:id', concertController.deleteConcert);
 
 // Lineup routes
 router.post('/lineup', lineupController.createLineup);
+router.get('/lineup', lineupController.getAllLineup);
 router.get('/lineup/:id', lineupController.getLineup);
 router.put('/lineup/:id', lineupController.updateLineup);
 router.delete('/lineup/:id', lineupController.deleteLineup);

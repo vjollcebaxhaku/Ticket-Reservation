@@ -49,7 +49,7 @@ model Gallery {
   title       String
   description String
   imageUrl    String
-  publishedAt DateTime
+  publishedAt DateTime  @default(now())
 }
 
 model FAQ {

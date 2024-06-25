@@ -180,6 +180,28 @@ const Dashboard = () => {
               </CardContent>
             </Card>
           </Grid>
+          <Grid item xs={4}>
+            <Card
+              sx={{
+                minWidth: 140,
+                minHeight: 140,
+                backgroundColor: "#FF69B4",
+                color: "#000",
+                display: "flex",
+                alignItems: "center",
+                justifyContent: "center",
+                cursor: "pointer",
+                border: "2px solid #000",
+              }}
+              onClick={() => navigate("/lineup")}
+            >
+              <CardContent>
+                <Typography variant="h5" component="h2" sx={{ fontFamily: "'Roboto Mono', monospace", textTransform: 'uppercase' }}>
+                  <AccountCircle fontSize="large" /> User Management
+                </Typography>
+              </CardContent>
+            </Card>
+          </Grid>
         </Grid>
       </div>
     </>

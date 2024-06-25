@@ -2,22 +2,35 @@
 import React, { useState } from 'react';
 import { useNavigate } from 'react-router-dom';
 import axios from 'axios';
-import { Container, TextField, Button, Box, Typography } from '@mui/material';
+import { Container, TextField, Button, Box, Typography, Alert } from '@mui/material';
 
 const AddGallery = () => {
   const [title, setTitle] = useState('');
   const [description, setDescription] = useState('');
-  const [imageUrl, setImageUrl] = useState('');
+  const [image, setImage] = useState(null);
+  const [message, setMessage] = useState('');
+  const [error, setError] = useState('');
   const navigate = useNavigate();
 
   const handleSubmit = async (e) => {
     e.preventDefault();
+    const formData = new FormData();
+    formData.append('title', title);
+    formData.append('description', description);
+    formData.append('image', image);
+
     try {
-      const currentDate = new Date().toISOString();
-      await axios.post('http://localhost:4000/gallery', { title, description, imageUrl, publishedAt: currentDate });
+      const response = await axios.post('http://localhost:4000/gallery', formData, {
+        headers: {
+          'Content-Type': 'multipart/form-data'
+        }
+      });
+      setMessage(response.data.message);
+      setError('');
       navigate('/gallery-management');
     } catch (error) {
-      console.error('Error adding gallery item:', error);
+      setError(error.response ? error.response.data.message : 'Error adding gallery item');
+      setMessage('');
     }
   };
 
@@ -37,6 +50,8 @@ const AddGallery = () => {
       <Typography variant="h3" component="h2" gutterBottom>
         Add Gallery Item
       </Typography>
+      {message && <Alert severity="success">{message}</Alert>}
+      {error && <Alert severity="error">{error}</Alert>}
       <Box 
         component="form" 
         onSubmit={handleSubmit} 
@@ -67,14 +82,18 @@ const AddGallery = () => {
           onChange={(e) => setDescription(e.target.value)}
           required
         />
-        <TextField
-          label="Image URL"
-          variant="outlined"
-          fullWidth
-          value={imageUrl}
-          onChange={(e) => setImageUrl(e.target.value)}
-          required
-        />
+        <Button
+          variant="contained"
+          component="label"
+        >
+          Upload File
+          <input
+            type="file"
+            hidden
+            onChange={(e) => setImage(e.target.files[0])}
+            required
+          />
+        </Button>
         <Button 
           type="submit" 
           variant="contained" 

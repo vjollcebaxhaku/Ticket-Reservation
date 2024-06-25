@@ -32,6 +32,7 @@ import TicketPurchase from './components/pages/TicketPurchase'; // Import Ticket
 import AddGallery from './dashboard/gallery/addGallery'; // Import AddNews component
 import EditGallery from './dashboard/gallery/editGallery'; // Import AddNews component
 import { VerifiedTwoTone } from '@mui/icons-material';
+import LineupDashboard from './dashboard/lineup/LineupDashboard';
 
 
 
@@ -68,6 +69,8 @@ function App() {
           <Route path="/roles-management" element={<RolesManagement />} />
           <Route path="/gallery-management/add" element={<AddGallery />} /> {/* AddNews Route */}
           <Route path="/gallery-management/edit" element={<EditGallery />} /> {/* AddNews Route */}
+          <Route path="/lineup-managment" element={<LineupDashboard />} /> {/* AddNews Route */}
+
         </Route>
       </Routes>
     </Router>
@@ -75,4 +78,4 @@ function App() {
 }
 
 export default App;
- qo
+ 

@@ -15,7 +15,7 @@ function Faq() {
       try {
         const response = await axios.get('http://localhost:4000/faq');
         setFaqData(response.data);
-      } catch (error) {x
+      } catch (error) {
         console.error('Error fetching FAQs:', error);
       }
     };

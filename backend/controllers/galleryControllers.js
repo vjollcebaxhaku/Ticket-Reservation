@@ -1,83 +1,127 @@
 const { PrismaClient } = require('@prisma/client');
 const prisma = new PrismaClient();
+const multer = require('multer');
 
-const getGalleryItems = async (req, res) => {
-    try {
-        const galleries = await prisma.gallery.findMany();
-        res.json(galleries);
-    } catch (error) {
-        res.status(500).json({ error: error.message });
-    }
-};
+// Setup storage for file uploads
+const storage = multer.diskStorage({
+  destination: (req, file, cb) => {
+    cb(null, 'uploads/');
+  },
+  filename: (req, file, cb) => {
+    cb(null, Date.now() + '-' + file.originalname);
+  }
+});
 
-const getGalleryById = async (req, res) => {
-    const { id } = req.params;
-    try {
-        const gallery = await prisma.gallery.findUnique({
-            where: {
-                id: parseInt(id)
-            }
-        });
-        if (!gallery) {
-            res.status(404).json({ error: "Gallery item not found" });
-            return;
-        }
-        res.json(gallery);
-    } catch (error) {
-        res.status(500).json({ error: error.message });
-    }
-};
+const upload = multer({ storage: storage }).single('image');
 
+// Create a new gallery item
 const createGallery = async (req, res) => {
-    const { title, description, imageUrl, publishedAt } = req.body;
-    try {
-        const newGallery = await prisma.gallery.create({
-            data: {
-                title,
-                description,
-                imageUrl,
-                publishedAt
-            }
-        });
-        res.status(201).json(newGallery);
-    } catch (error) {
-        res.status(500).json({ error: error.message });
+  upload(req, res, async (err) => {
+    if (err) {
+      return res.status(500).json({ message: 'Error uploading file', error: err });
     }
+
+    try {
+      const { title, description } = req.body;
+      const imageUrl = `/uploads/${req.file.filename}`;
+
+      const newGalleryItem = await prisma.galleryItem.create({
+        data: {
+          title,
+          description,
+          imageUrl,
+          publishedAt: new Date()
+        }
+      });
+
+      res.status(201).json(newGalleryItem);
+    } catch (error) {
+      console.error('Error adding gallery item:', error);
+      res.status(500).json({ message: 'Internal Server Error' });
+    }
+  });
 };
 
+// Get all gallery items
+const getGalleryItems = async (req, res) => {
+  try {
+    const galleryItems = await prisma.galleryItem.findMany();
+    res.status(200).json(galleryItems);
+  } catch (error) {
+    console.error('Error fetching gallery items:', error);
+    res.status(500).json({ message: 'Internal Server Error' });
+  }
+};
+
+// Get a gallery item by ID
+const getGalleryById = async (req, res) => {
+  try {
+    const { id } = req.params;
+    const galleryItem = await prisma.galleryItem.findUnique({
+      where: { id: parseInt(id) }
+    });
+
+    if (!galleryItem) {
+      return res.status(404).json({ message: 'Gallery item not found' });
+    }
+
+    res.status(200).json(galleryItem);
+  } catch (error) {
+    console.error('Error fetching gallery item:', error);
+    res.status(500).json({ message: 'Internal Server Error' });
+  }
+};
+
+// Update a gallery item
 const updateGallery = async (req, res) => {
-    const { id } = req.params;
-    const { title, description, imageUrl, publishedAt } = req.body;
-    try {
-        const updatedGallery = await prisma.gallery.update({
-            where: {
-                id: parseInt(id)
-            },
-            data: {
-                title,
-                description,
-                imageUrl,
-                publishedAt
-            }
-        });
-        res.json(updatedGallery);
-    } catch (error) {
-        res.status(500).json({ error: error.message });
+  upload(req, res, async (err) => {
+    if (err) {
+      return res.status(500).json({ message: 'Error uploading file', error: err });
     }
+
+    try {
+      const { id } = req.params;
+      const { title, description } = req.body;
+      const imageUrl = req.file ? `/uploads/${req.file.filename}` : undefined;
+
+      const updatedGalleryItem = await prisma.galleryItem.update({
+        where: { id: parseInt(id) },
+        data: {
+          title,
+          description,
+          imageUrl,
+          updatedAt: new Date()
+        }
+      });
+
+      res.status(200).json(updatedGalleryItem);
+    } catch (error) {
+      console.error('Error updating gallery item:', error);
+      res.status(500).json({ message: 'Internal Server Error' });
+    }
+  });
 };
 
+// Delete a gallery item
 const deleteGallery = async (req, res) => {
+  try {
     const { id } = req.params;
-    try {
-        await prisma.gallery.delete({
-            where: {
-                id: parseInt(id)
-            }
-        });
-        res.json({ message: "Gallery item deleted successfully" });
-    } catch (error) {
-        res.status(500).json({ error: error.message });
-    }
+
+    await prisma.galleryItem.delete({
+      where: { id: parseInt(id) }
+    });
+
+    res.status(204).send();
+  } catch (error) {
+    console.error('Error deleting gallery item:', error);
+    res.status(500).json({ message: 'Internal Server Error' });
+  }
 };
 
-module.exports = { getGalleryItems, getGalleryById, createGallery, updateGallery, deleteGallery };
+module.exports = {
+  getGalleryItems,
+  createGallery,
+  getGalleryById,
+  updateGallery,
+  deleteGallery
+};

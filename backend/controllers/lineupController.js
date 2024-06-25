@@ -11,7 +11,7 @@ const createLineup = async (req, res) => {
         genre,
         description,
         imageUrl,
-        concertID,
+        concertID: parseInt(concertID),
       },
     });
     res.status(201).json(lineup);
@@ -67,8 +67,18 @@ const deleteLineup = async (req, res) => {
   }
 };
 
+const getAllLineup = async (req, res) => {
+  try {
+      const lineup = await prisma.lineup.findMany();
+      res.json(lineup);
+  } catch (error) {
+      res.status(500).json({ error: error.message });
+  }
+};
+
 module.exports = {
   createLineup,
+  getAllLineup,
   getLineup,
   updateLineup,
   deleteLineup,
