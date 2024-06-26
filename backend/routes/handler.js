@@ -88,6 +88,7 @@ const concertController = require('../controllers/concertController');
 
 router.post('/concert', concertController.createConcert);
 router.get('/concert/:id', concertController.getConcert);
+router.get('/concert', concertController.getAllConcert);
 router.put('/concert/:id', concertController.updateConcert);
 router.delete('/concert/:id', concertController.deleteConcert);
 

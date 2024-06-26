@@ -25,7 +25,7 @@ const createGallery = async (req, res) => {
       const { title, description } = req.body;
       const imageUrl = `/uploads/${req.file.filename}`;
 
-      const newGalleryItem = await prisma.galleryItem.create({
+      const newGalleryItem = await prisma.gallery.create({
         data: {
           title,
           description,
@@ -45,7 +45,7 @@ const createGallery = async (req, res) => {
 // Get all gallery items
 const getGalleryItems = async (req, res) => {
   try {
-    const galleryItems = await prisma.galleryItem.findMany();
+    const galleryItems = await prisma.gallery.findMany();
     res.status(200).json(galleryItems);
   } catch (error) {
     console.error('Error fetching gallery items:', error);
@@ -57,7 +57,7 @@ const getGalleryItems = async (req, res) => {
 const getGalleryById = async (req, res) => {
   try {
     const { id } = req.params;
-    const galleryItem = await prisma.galleryItem.findUnique({
+    const galleryItem = await prisma.gallery.findUnique({
       where: { id: parseInt(id) }
     });
 
@@ -84,14 +84,19 @@ const updateGallery = async (req, res) => {
       const { title, description } = req.body;
       const imageUrl = req.file ? `/uploads/${req.file.filename}` : undefined;
 
-      const updatedGalleryItem = await prisma.galleryItem.update({
+      const updateData = {
+        title,
+        description,
+        updatedAt: new Date()
+      };
+
+      if (imageUrl) {
+        updateData.imageUrl = imageUrl;
+      }
+
+      const updatedGalleryItem = await prisma.gallery.update({
         where: { id: parseInt(id) },
-        data: {
-          title,
-          description,
-          imageUrl,
-          updatedAt: new Date()
-        }
+        data: updateData
       });
 
       res.status(200).json(updatedGalleryItem);
@@ -107,7 +112,7 @@ const deleteGallery = async (req, res) => {
   try {
     const { id } = req.params;
 
-    await prisma.galleryItem.delete({
+    await prisma.gallery.delete({
       where: { id: parseInt(id) }
     });
 

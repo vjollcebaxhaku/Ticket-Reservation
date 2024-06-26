@@ -1,4 +1,5 @@
-import React from 'react';
+import React, { useState, useEffect } from 'react';
+import axios from 'axios';
 import Nav from '../Nav'; // Update import path for Nav component
 import Footer from '../Footer'; // Update import path for Footer component
 import Layout from '../Layout';
@@ -7,6 +8,21 @@ import lineupPic from './pictures/pic4.png';
 import { Box, Typography } from '@mui/material';
 
 function Lineup() {
+  const [concerts, setConcerts] = useState([]);
+
+  useEffect(() => {
+    fetchConcerts();
+  }, []);
+
+  const fetchConcerts = async () => {
+    try {
+      const response = await axios.get('http://localhost:4000/concert');
+      setConcerts(response.data);
+    } catch (error) {
+      console.error('Error fetching concert data', error);
+    }
+  };
+
   const handleMouseOver = (event) => {
     event.currentTarget.src = burnaHoverPic;
   };
@@ -49,11 +65,11 @@ function Lineup() {
           justifyContent: 'space-around', // Adjust the spacing as needed
         }}
       >
-        {['PRISHTINA 2024', 'PRISHTINA 22', 'TIRANA 22', 'PRISHTINA 2019', 'PRISHTINA 2018'].map((year) => (
+        {concerts.map((concert) => (
           <Typography
-            key={year}
+            key={concert.id}
             variant="h6"
-            onClick={() => handleClick(year)}
+            onClick={() => handleClick(concert.year)}
             sx={{
               fontWeight: 'bold',
               textTransform: 'uppercase',
@@ -63,7 +79,7 @@ function Lineup() {
               cursor: 'pointer', // Add cursor pointer for clickable effect
             }}
           >
-            {year}
+            {concert.name} {concert.year}
           </Typography>
         ))}
       </Box>

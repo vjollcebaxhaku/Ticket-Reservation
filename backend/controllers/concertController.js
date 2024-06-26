@@ -18,6 +18,16 @@ const createConcert = async (req, res) => {
   }
 };
 
+const getAllConcert = async (req, res) => {
+  try {
+      const concerts = await prisma.concert.findMany();
+      res.json(concerts);
+  } catch (error) {
+      res.status(500).json({ error: error.message });
+  }
+};
+
+
 const getConcert = async (req, res) => {
   const { id } = req.params;
   try {
@@ -65,6 +75,7 @@ const deleteConcert = async (req, res) => {
 
 module.exports = {
   createConcert,
+  getAllConcert,
   getConcert,
   updateConcert,
   deleteConcert,

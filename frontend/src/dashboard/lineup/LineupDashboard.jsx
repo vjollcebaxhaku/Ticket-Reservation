@@ -108,6 +108,9 @@ const LineupDashboard = () => {
   return (
     <div className="container mx-auto p-4">
       <h1 className="text-2xl font-bold mb-4">Lineup</h1>
+      <a className="text-2xl font-bold mb-4" href="/dashboard"> / Go Back</a>
+      <br />
+      <br />
       <button 
         className="bg-green-500 text-white px-4 py-2 rounded mb-4"
         onClick={openAddModal}

@@ -33,6 +33,7 @@ import AddGallery from './dashboard/gallery/addGallery'; // Import AddNews compo
 import EditGallery from './dashboard/gallery/editGallery'; // Import AddNews component
 import { VerifiedTwoTone } from '@mui/icons-material';
 import LineupDashboard from './dashboard/lineup/LineupDashboard';
+import ConcertManager from './dashboard/Concert/ConcertManager';
 
 
 
@@ -70,6 +71,7 @@ function App() {
           <Route path="/gallery-management/add" element={<AddGallery />} /> {/* AddNews Route */}
           <Route path="/gallery-management/edit" element={<EditGallery />} /> {/* AddNews Route */}
           <Route path="/lineup-managment" element={<LineupDashboard />} /> {/* AddNews Route */}
+          <Route path="/concert-managment" element={<ConcertManager />} /> {/* AddNews Route */}
 
         </Route>
       </Routes>

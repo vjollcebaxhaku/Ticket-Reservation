@@ -193,11 +193,33 @@ const Dashboard = () => {
                 cursor: "pointer",
                 border: "2px solid #000",
               }}
-              onClick={() => navigate("/lineup")}
+              onClick={() => navigate("/lineup-managment")}
             >
               <CardContent>
                 <Typography variant="h5" component="h2" sx={{ fontFamily: "'Roboto Mono', monospace", textTransform: 'uppercase' }}>
-                  <AccountCircle fontSize="large" /> User Management
+                  <AccountCircle fontSize="large" /> Line Ups
+                </Typography>
+              </CardContent>
+            </Card>
+          </Grid>
+          <Grid item xs={4}>
+            <Card
+              sx={{
+                minWidth: 140,
+                minHeight: 140,
+                backgroundColor: "#FF69B4",
+                color: "#000",
+                display: "flex",
+                alignItems: "center",
+                justifyContent: "center",
+                cursor: "pointer",
+                border: "2px solid #000",
+              }}
+              onClick={() => navigate("/concert-managment")}
+            >
+              <CardContent>
+                <Typography variant="h5" component="h2" sx={{ fontFamily: "'Roboto Mono', monospace", textTransform: 'uppercase' }}>
+                  <AccountCircle fontSize="large" /> Concerts
                 </Typography>
               </CardContent>
             </Card>
