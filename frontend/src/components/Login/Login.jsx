@@ -8,12 +8,15 @@ const Login = () => {
 
   const handleSubmit = async (e) => {
     e.preventDefault();
-    console.log({ email, password });
     try {
-      const response = await axios.post('http://localhost:4000/login', { email, password });
-      console.log(response);
-      localStorage.setItem('currentUserRole', response.data.role)
-      localStorage.setItem('userID', response.data.userId)
+      const response = await axios.post('http://localhost:4000/login', { email, password })
+      const { role, userId, permissions } = response.data
+      const userPermissions = permissions?.apps || [];
+      const permissionsString = userPermissions.join(',');
+      sessionStorage.setItem('currentUserRole', role)
+      sessionStorage.setItem('userID', userId)
+      sessionStorage.setItem('permissions', permissionsString )
+      console.log(response.data)
       if (response.data.role === "admin") {
         navigate("/dashboard")
 

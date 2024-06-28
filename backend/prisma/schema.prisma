@@ -16,6 +16,7 @@ model User {
   username    String?
   role        String?
   tickets     UserTicket[]
+  permissions Json?
 }
 
 model Ticket {

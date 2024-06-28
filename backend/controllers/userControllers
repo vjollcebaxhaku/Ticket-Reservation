@@ -22,7 +22,8 @@ const createUser = async (req, res) => {
                 email,
                 password,
                 surname,
-                username
+                username,
+                permissions: { apps: [] }
             }
         });
         res.status(201).json(newUser);
@@ -53,7 +54,7 @@ const getUserById = async (req, res) => {
 // PUT update a user by ID
 const updateUser = async (req, res) => {
     const { id } = req.params;
-    const { name, email, password, surname, username } = req.body; // Destructure all fields
+    const { name, email, password, surname, username, permissions } = req.body; // Destructure all fields
     try {
         const updatedUser = await prisma.user.update({
             where: {
@@ -64,7 +65,8 @@ const updateUser = async (req, res) => {
                 email,
                 password,
                 surname,
-                username
+                username,
+                permissions
             }
         });
         res.json(updatedUser);
@@ -105,11 +107,10 @@ const loginUser = async (req, res) => {
             res.json({ success: false, message: "Incorrect password" });
             return;
         }
-        // Assuming you have a 'role' field associated with each user
-        const role = user.role;
-        const userId = user.id;
 
-        res.json({ success: true, message: "Login successful", role, userId });
+        const { id, role, permissions} = user
+
+        res.json({ success: true, message: "Login successful", role, userId: id, permissions });
     } catch (error) {
         res.status(500).json({ success: false, error: error.message });
     }

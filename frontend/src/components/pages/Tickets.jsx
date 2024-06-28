@@ -30,7 +30,7 @@ function Tickets() {
   }, []);
 
   const handleViewMyTickets = () => {
-    const userId = localStorage.getItem('userID'); // Assuming userId is stored in localStorage
+    const userId = sessionStorage.getItem('userID'); // Assuming userId is stored in sessionStorage
 
     if (userId) {
       setModalLoading(true);
@@ -47,7 +47,7 @@ function Tickets() {
         });
     } else {
       // Handle case where userId is not available
-      console.error('User ID not found in localStorage');
+      console.error('User ID not found in sessionStorage');
     }
   };
 

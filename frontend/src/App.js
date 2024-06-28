@@ -10,7 +10,6 @@ import AboutUs from './components/pages/AboutUs';
 import Faq from './components/pages/Faq';
 import Login from './components/Login/Login';
 import Dashboard from './dashboard/Dashboard';
-import Nav from './components/Nav';
 import Register from './components/Login/Regsiter';
 import Users from './dashboard/users';
 import NotFound from './components/pages/NonAdmin';
@@ -31,11 +30,10 @@ import EditNews from './dashboard/news/editNews'; // Import EditNews component
 import TicketPurchase from './components/pages/TicketPurchase'; // Import TicketPurchase component
 import AddGallery from './dashboard/gallery/addGallery'; // Import AddNews component
 import EditGallery from './dashboard/gallery/editGallery'; // Import AddNews component
-import { VerifiedTwoTone } from '@mui/icons-material';
 import LineupDashboard from './dashboard/lineup/LineupDashboard';
 import ConcertManager from './dashboard/Concert/ConcertManager';
-
-
+import RoleManagement from './dashboard/users/RolesManagement';
+import PermissionRoutes from './PermissionsRoutes';
 
 function App() {
   return (
@@ -61,9 +59,11 @@ function App() {
           <Route path="/ticket-management" element={<TicketManagement />} />
           <Route path="/ticket-management/add" element={<AddTicket />} /> {/* AddTicket Route */}
           <Route path="/ticket-management/edit/:id" element={<EditTicket />} /> {/* EditTicket Route */}
-          <Route path="/faq-management" element={<FaqManagement />} /> {/* FaqManagement Route */}
-          <Route path="/faq-management/add" element={<AddFaq />} /> {/* AddFaq Route */}
-          <Route path="/faq-management/edit/:id" element={<EditFaq />} /> {/* EditFaq Route */}
+          <Route element={<PermissionRoutes permission="FAQ_TESTING" />}>
+            <Route path="/faq-management" element={<FaqManagement />} /> {/* FaqManagement Route */}
+            <Route path="/faq-management/add" element={<AddFaq />} /> {/* AddFaq Route */}
+            <Route path="/faq-management/edit/:id" element={<EditFaq />} /> {/* EditFaq Route */}
+          </Route>
           <Route path="/news-management/add" element={<AddNews />} /> {/* AddNews Route */}
           <Route path="/news-management/edit/:id" element={<EditNews />} /> {/* EditNews Route */}
           <Route path="/gallery-management" element={<GalleryManagement />} />
@@ -72,7 +72,7 @@ function App() {
           <Route path="/gallery-management/edit" element={<EditGallery />} /> {/* AddNews Route */}
           <Route path="/lineup-managment" element={<LineupDashboard />} /> {/* AddNews Route */}
           <Route path="/concert-managment" element={<ConcertManager />} /> {/* AddNews Route */}
-
+          <Route path="/role-management/:id" element={<RoleManagement />} />
         </Route>
       </Routes>
     </Router>
