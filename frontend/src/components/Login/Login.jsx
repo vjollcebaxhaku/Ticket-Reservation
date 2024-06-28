@@ -11,9 +11,9 @@ const Login = () => {
     console.log({ email, password });
     try {
       const response = await axios.post('http://localhost:4000/login', { email, password });
-      // Set the local storage for when the response comes back to use later in the app for authentication
+      console.log(response);
       localStorage.setItem('currentUserRole', response.data.role)
-
+      localStorage.setItem('userID', response.data.userId)
       if (response.data.role === "admin") {
         navigate("/dashboard")
 

@@ -13,9 +13,6 @@ const getUsers = async (req, res) => {
 };
 
 // POST create a new user
-// controllers/userControllers.js
-
-// POST create a new user
 const createUser = async (req, res) => {
     const { name, email, password, surname, username } = req.body; // Destructure all fields
     try {
@@ -33,7 +30,6 @@ const createUser = async (req, res) => {
         res.status(500).json({ error: error.message });
     }
 };
-
 
 // GET a single user by ID
 const getUserById = async (req, res) => {
@@ -53,8 +49,6 @@ const getUserById = async (req, res) => {
         res.status(500).json({ error: error.message });
     }
 };
-
-// controllers/userControllers.js
 
 // PUT update a user by ID
 const updateUser = async (req, res) => {
@@ -93,6 +87,8 @@ const deleteUser = async (req, res) => {
         res.status(500).json({ error: error.message });
     }
 };
+
+// Login a user
 const loginUser = async (req, res) => {
     const { email, password } = req.body;
     try {
@@ -111,12 +107,12 @@ const loginUser = async (req, res) => {
         }
         // Assuming you have a 'role' field associated with each user
         const role = user.role;
+        const userId = user.id;
 
-        res.json({ success: true, message: "Login successful", role });
+        res.json({ success: true, message: "Login successful", role, userId });
     } catch (error) {
         res.status(500).json({ success: false, error: error.message });
     }
 };
-
 
 module.exports = { getUsers, createUser, getUserById, updateUser, deleteUser, loginUser };

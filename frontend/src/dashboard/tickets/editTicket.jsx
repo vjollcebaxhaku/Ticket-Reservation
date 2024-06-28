@@ -4,7 +4,7 @@ import axios from 'axios';
 import { Container, TextField, Button, Typography, Box, Snackbar, Alert } from '@mui/material';
 
 const EditTicket = () => {
-  const [ticket, setTicket] = useState({ name: '', price: 0, type: '' });
+  const [ticket, setTicket] = useState({ name: '', price: '', type: '' });
   const [snackbarOpen, setSnackbarOpen] = useState(false);
   const { id } = useParams();
   const navigate = useNavigate();
@@ -30,7 +30,9 @@ const EditTicket = () => {
   const handleSubmit = async (e) => {
     e.preventDefault();
     try {
-      await axios.put(`/api/tickets/${id}`, ticket);
+      // Convert price to float for numeric input handling
+      const updatedTicket = { ...ticket, price: parseFloat(ticket.price) };
+      await axios.put(`http://localhost:4000/tickets/${id}`, updatedTicket);
       setSnackbarOpen(true);
       navigate('/ticket-management');
     } catch (error) {

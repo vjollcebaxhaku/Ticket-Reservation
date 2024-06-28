@@ -37,21 +37,32 @@ router.put('/users/:id', updateUser);
 router.delete('/users/:id', deleteUser);
 router.post('/login', loginUser);
 
-// Import Ticket controllers
+/// Import necessary functions from the ticket controller
 const {
-    getTickets,
-    createTicket,
-    getTicketById,
-    updateTicket,
-    deleteTicket
-} = require('../controllers/ticketControllers');
+  getTickets,
+  createTicket,
+  getTicketById,
+  updateTicket,
+  deleteTicket,
+  buyTicket,
+  getTicketsForUser,
+} = require('../controllers/ticketController');
+
+
 
 // Ticket Routes
-router.get('/tickets', getTickets);
-router.post('/tickets', createTicket);
-router.get('/tickets/:id', getTicketById);
-router.put('/tickets/:id', updateTicket);
-router.delete('/tickets/:id', deleteTicket);
+router.get('/tickets', getTickets);           // Get all tickets
+router.post('/tickets', createTicket);        // Create a new ticket
+router.get('/tickets/:id', getTicketById);    // Get a ticket by ID
+router.put('/tickets/:id', updateTicket);     // Update a ticket by ID
+router.delete('/tickets/:id', deleteTicket);  // Delete a ticket by ID
+
+// Additional routes related to ticket management
+router.post('/buy-ticket', buyTicket);       // Buy a ticket (assuming you have a route for buying tickets)
+router.get('/tickets/user/:userId', getTicketsForUser); // Get tickets purchased by a specific user
+
+module.exports = router;
+
 
 // Import FAQ controllers
 const {
@@ -88,7 +99,6 @@ const concertController = require('../controllers/concertController');
 
 router.post('/concert', concertController.createConcert);
 router.get('/concert/:id', concertController.getConcert);
-router.get('/concert', concertController.getAllConcert);
 router.put('/concert/:id', concertController.updateConcert);
 router.delete('/concert/:id', concertController.deleteConcert);
 

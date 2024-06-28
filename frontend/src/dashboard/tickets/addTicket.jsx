@@ -3,8 +3,8 @@ import { useNavigate } from 'react-router-dom';
 import axios from 'axios';
 import { Container, TextField, Button, Typography, Box, Snackbar, Alert } from '@mui/material';
 
-const AddTicket = () => {
-  const [ticket, setTicket] = useState({ name: '', price: 0, type: '', userId: currentUserId });
+const AddTicket = ({ currentUserId }) => {
+  const [ticket, setTicket] = useState({ name: '', price: '', type: '', userId: currentUserId });
   const [snackbarOpen, setSnackbarOpen] = useState(false);
   const navigate = useNavigate();
 
@@ -24,6 +24,7 @@ const AddTicket = () => {
       navigate('/ticket-management');
     } catch (error) {
       console.error('Error adding ticket:', error);
+      // Handle error state or message to user
     }
   };
 
