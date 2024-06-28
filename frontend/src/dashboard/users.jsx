@@ -1,36 +1,49 @@
 import React, { useState, useEffect } from 'react';
 import { Link } from 'react-router-dom';
 import axios from 'axios';
-import { Alert, Box, Button, CircularProgress, Container, Snackbar, Table, TableBody, TableCell, TableHead, TableRow, Typography } from '@mui/material';
+import { Alert, Box, Button, CircularProgress, Container, Dialog, DialogActions, DialogContent, DialogContentText, DialogTitle, Snackbar, Table, TableBody, TableCell, TableHead, TableRow, Typography } from '@mui/material';
 
 const UserManagement = () => {
-  const [user, setUser] = useState([]);
+  const [users, setUsers] = useState([]);
   const [loading, setLoading] = useState(true);
   const [snackbarOpen, setSnackbarOpen] = useState(false);
+  const [confirmDialogOpen, setConfirmDialogOpen] = useState(false);
+  const [userToDelete, setUserToDelete] = useState(null);
 
   useEffect(() => {
-    const fetchUser = async () => {
+    const fetchUsers = async () => {
       try {
-        const response = await axios.get('http://localhost:4000/users');  
-        setUser(response.data);
+        const response = await axios.get('http://localhost:4000/users');
+        setUsers(response.data);
         setLoading(false);
       } catch (error) {
-        console.error('Error fetching user:', error);
+        console.error('Error fetching users:', error);
         setLoading(false);
       }
     };
 
-    fetchUser();
+    fetchUsers();
   }, []);
 
-  const handleDelete = async (userId) => {
+  const handleDelete = async () => {
     try {
-      await axios.delete(`http://localhost:4000/users/${userId}`);
+      await axios.delete(`http://localhost:4000/users/${userToDelete}`);
       setSnackbarOpen(true);
-      setUser(user.filter((user) => user.id !== userId));
+      setUsers(users.filter((user) => user.id !== userToDelete));
+      setConfirmDialogOpen(false);
     } catch (error) {
       console.error('Error deleting user:', error);
+      setConfirmDialogOpen(false);
     }
+  };
+
+  const openConfirmDialog = (userId) => {
+    setUserToDelete(userId);
+    setConfirmDialogOpen(true);
+  };
+
+  const closeConfirmDialog = () => {
+    setConfirmDialogOpen(false);
   };
 
   const handleCloseSnackbar = () => {
@@ -57,7 +70,7 @@ const UserManagement = () => {
         </Box>
         {loading ? (
           <CircularProgress />
-        ) : user.length > 0 ? (
+        ) : users.length > 0 ? (
           <Table sx={{ mt: 4, bgcolor: 'background.paper' }}>
             <TableHead>
               <TableRow>
@@ -69,7 +82,7 @@ const UserManagement = () => {
               </TableRow>
             </TableHead>
             <TableBody>
-              {user.map((user) => (
+              {users.map((user) => (
                 <TableRow key={user.id} hover>
                   <TableCell>{user.id}</TableCell>
                   <TableCell>{user.username}</TableCell>
@@ -80,7 +93,7 @@ const UserManagement = () => {
                       <Button variant="contained" style={{ backgroundColor: '#630a87', color: '#fff', fontFamily: "'Roboto Mono', monospace" }} component={Link} to={`/users/${user.id}`}>
                         Edit
                       </Button>
-                      <Button variant="contained" style={{ backgroundColor: '#FF69B4', fontFamily: "'Roboto Mono', monospace", color: 'black' }} onClick={() => handleDelete(user.id)}>
+                      <Button variant="contained" style={{ backgroundColor: '#FF69B4', fontFamily: "'Roboto Mono', monospace", color: 'black' }} onClick={() => openConfirmDialog(user.id)}>
                         Delete
                       </Button>
                     </Box>
@@ -104,6 +117,22 @@ const UserManagement = () => {
             User has been deleted!
           </Alert>
         </Snackbar>
+        <Dialog open={confirmDialogOpen} onClose={closeConfirmDialog}>
+          <DialogTitle>Confirm Deletion</DialogTitle>
+          <DialogContent>
+            <DialogContentText sx={{ fontFamily: "'Roboto Mono', monospace" }}>
+              Are you sure you want to delete this user? This action cannot be undone.
+            </DialogContentText>
+          </DialogContent>
+          <DialogActions>
+            <Button onClick={closeConfirmDialog} style={{ color: 'black', fontFamily: "'Roboto Mono', monospace" }}>
+              Cancel
+            </Button>
+            <Button onClick={handleDelete} style={{ backgroundColor: '#FF69B4', fontFamily: "'Roboto Mono', monospace", color: 'black' }}>
+              Delete
+            </Button>
+          </DialogActions>
+        </Dialog>
       </Container>
     </Box>
   );

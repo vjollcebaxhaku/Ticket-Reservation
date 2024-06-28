@@ -1,17 +1,19 @@
 import React, { useState, useEffect } from 'react';
 import { Link } from 'react-router-dom';
 import axios from 'axios';
-import { Alert, Box, Button, CircularProgress, Container, Snackbar, Table, TableBody, TableCell, TableHead, TableRow, Typography } from '@mui/material';
+import { Alert, Box, Button, CircularProgress, Container, Dialog, DialogActions, DialogContent, DialogContentText, DialogTitle, Snackbar, Table, TableBody, TableCell, TableHead, TableRow, Typography } from '@mui/material';
 
 const NewsManagement = () => {
   const [news, setNews] = useState([]);
   const [loading, setLoading] = useState(true);
   const [snackbarOpen, setSnackbarOpen] = useState(false);
+  const [confirmDialogOpen, setConfirmDialogOpen] = useState(false);
+  const [newsToDelete, setNewsToDelete] = useState(null);
 
   useEffect(() => {
     const fetchNews = async () => {
       try {
-        const response = await axios.get('http://localhost:4000/news');  
+        const response = await axios.get('http://localhost:4000/news');
         setNews(response.data);
         setLoading(false);
       } catch (error) {
@@ -23,14 +25,25 @@ const NewsManagement = () => {
     fetchNews();
   }, []);
 
-  const handleDelete = async (newsId) => {
+  const handleDelete = async () => {
     try {
-      await axios.delete(`http://localhost:4000/news/${newsId}`);
+      await axios.delete(`http://localhost:4000/news/${newsToDelete}`);
       setSnackbarOpen(true);
-      setNews(news.filter((newsItem) => newsItem.id !== newsId));
+      setNews(news.filter((newsItem) => newsItem.id !== newsToDelete));
+      setConfirmDialogOpen(false);
     } catch (error) {
       console.error('Error deleting News:', error);
+      setConfirmDialogOpen(false);
     }
+  };
+
+  const openConfirmDialog = (newsId) => {
+    setNewsToDelete(newsId);
+    setConfirmDialogOpen(true);
+  };
+
+  const closeConfirmDialog = () => {
+    setConfirmDialogOpen(false);
   };
 
   const handleCloseSnackbar = () => {
@@ -78,7 +91,7 @@ const NewsManagement = () => {
                       <Button variant="contained" style={{ backgroundColor: '#630a87', color: '#fff', fontFamily: "'Roboto Mono', monospace" }} component={Link} to={`/news-management/edit/${newsItem.id}`}>
                         Edit
                       </Button>
-                      <Button variant="contained" style={{ backgroundColor: '#FF69B4', fontFamily: "'Roboto Mono', monospace", color: 'black' }} onClick={() => handleDelete(newsItem.id)}>
+                      <Button variant="contained" style={{ backgroundColor: '#FF69B4', fontFamily: "'Roboto Mono', monospace", color: 'black' }} onClick={() => openConfirmDialog(newsItem.id)}>
                         Delete
                       </Button>
                     </Box>
@@ -102,6 +115,22 @@ const NewsManagement = () => {
             News has been deleted!
           </Alert>
         </Snackbar>
+        <Dialog open={confirmDialogOpen} onClose={closeConfirmDialog}>
+          <DialogTitle>Confirm Deletion</DialogTitle>
+          <DialogContent>
+            <DialogContentText sx={{ fontFamily: "'Roboto Mono', monospace" }}>
+              Are you sure you want to delete this news item? This action cannot be undone.
+            </DialogContentText>
+          </DialogContent>
+          <DialogActions>
+            <Button onClick={closeConfirmDialog} style={{ color: 'black', fontFamily: "'Roboto Mono', monospace" }}>
+              Cancel
+            </Button>
+            <Button onClick={handleDelete} style={{ backgroundColor: '#FF69B4', fontFamily: "'Roboto Mono', monospace", color: 'black' }}>
+              Delete
+            </Button>
+          </DialogActions>
+        </Dialog>
       </Container>
     </Box>
   );

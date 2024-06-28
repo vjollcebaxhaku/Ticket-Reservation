@@ -1,12 +1,14 @@
 import React, { useState, useEffect } from 'react';
 import { Link } from 'react-router-dom';
 import axios from 'axios';
-import { Alert, Box, Button, CircularProgress, Container, Snackbar, Table, TableBody, TableCell, TableHead, TableRow, Typography } from '@mui/material';
+import { Alert, Box, Button, CircularProgress, Container, Dialog, DialogActions, DialogContent, DialogContentText, DialogTitle, Snackbar, Table, TableBody, TableCell, TableHead, TableRow, Typography } from '@mui/material';
 
 const FaqManagement = () => {
   const [faq, setFaq] = useState([]);
   const [loading, setLoading] = useState(true);
   const [snackbarOpen, setSnackbarOpen] = useState(false);
+  const [confirmDialogOpen, setConfirmDialogOpen] = useState(false);
+  const [faqToDelete, setFaqToDelete] = useState(null);
 
   useEffect(() => {
     const fetchFaq = async () => {
@@ -23,14 +25,25 @@ const FaqManagement = () => {
     fetchFaq();
   }, []);
 
-  const handleDelete = async (faqId) => {
+  const handleDelete = async () => {
     try {
-      await axios.delete(`http://localhost:4000/faq/${faqId}`);
+      await axios.delete(`http://localhost:4000/faq/${faqToDelete}`);
       setSnackbarOpen(true);
-      setFaq(faq.filter((faqItem) => faqItem.id !== faqId));
+      setFaq(faq.filter((faqItem) => faqItem.id !== faqToDelete));
+      setConfirmDialogOpen(false);
     } catch (error) {
       console.error('Error deleting FAQ:', error);
+      setConfirmDialogOpen(false);
     }
+  };
+
+  const openConfirmDialog = (faqId) => {
+    setFaqToDelete(faqId);
+    setConfirmDialogOpen(true);
+  };
+
+  const closeConfirmDialog = () => {
+    setConfirmDialogOpen(false);
   };
 
   const handleCloseSnackbar = () => {
@@ -78,7 +91,7 @@ const FaqManagement = () => {
                       <Button variant="contained" style={{ backgroundColor: '#630a87', color: '#fff', fontFamily: "'Roboto Mono', monospace" }} component={Link} to={`/faq/edit/${faqItem.id}`}>
                         Edit
                       </Button>
-                      <Button variant="contained" style={{ backgroundColor: '#FF69B4', fontFamily: "'Roboto Mono', monospace", color: 'black' }} onClick={() => handleDelete(faqItem.id)}>
+                      <Button variant="contained" style={{ backgroundColor: '#FF69B4', fontFamily: "'Roboto Mono', monospace", color: 'black' }} onClick={() => openConfirmDialog(faqItem.id)}>
                         Delete
                       </Button>
                     </Box>
@@ -102,6 +115,22 @@ const FaqManagement = () => {
             FAQ has been deleted!
           </Alert>
         </Snackbar>
+        <Dialog open={confirmDialogOpen} onClose={closeConfirmDialog}>
+          <DialogTitle>Confirm Deletion</DialogTitle>
+          <DialogContent>
+            <DialogContentText sx={{ fontFamily: "'Roboto Mono', monospace" }}>
+              Are you sure you want to delete this FAQ? This action cannot be undone.
+            </DialogContentText>
+          </DialogContent>
+          <DialogActions>
+            <Button onClick={closeConfirmDialog} style={{ color: 'black', fontFamily: "'Roboto Mono', monospace" }}>
+              Cancel
+            </Button>
+            <Button onClick={handleDelete} style={{ backgroundColor: '#FF69B4', fontFamily: "'Roboto Mono', monospace", color: 'black' }}>
+              Delete
+            </Button>
+          </DialogActions>
+        </Dialog>
       </Container>
     </Box>
   );
