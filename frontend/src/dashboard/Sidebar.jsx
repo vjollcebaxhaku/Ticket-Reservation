@@ -9,18 +9,12 @@ const Sidebar = ({ openSidebarToggle, OpenSidebar }) => {
       </div>
       <ul className='sidebar-list' style={{ listStyleType: 'none', display: 'flex', alignItems: 'center', padding: 0 }}>
         <li className='sidebar-list-item' style={{ margin: '0 10px' }}>
-          <Link to="/home" style={{ color: '#008000', textDecoration: 'none', fontWeight: 'bold', fontSize: '16px', display: 'flex', alignItems: 'center' }}>
+          <Link to="/" style={{ color: '#008000', textDecoration: 'none', fontWeight: 'bold', fontSize: '16px', display: 'flex', alignItems: 'center' }}>
             <BsGrid1X2Fill className='icon' style={{ marginRight: '10px', marginLeft: '5px' }} />
             <span>HOMEPAGE</span>
           </Link>
         </li>
-        <li className='sidebar-list-item' style={{ margin: '0 10px' }}>
-          <Link to="/roles" style={{ color: '#008000', textDecoration: 'none', fontWeight: 'bold', fontSize: '16px', display: 'flex', alignItems: 'center' }}>
-            <BsPeopleFill className='icon' style={{ marginRight: '10px', marginLeft: '5px' }} />
-            <span>ROLES</span>
-          </Link>
-        </li>
-        {/* Other sidebar items */}
+       
       </ul>
       <span className='icon close_icon' style={{ color: '#008000', cursor: 'pointer' }} onClick={OpenSidebar}></span>
     </aside>
