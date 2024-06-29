@@ -54,7 +54,7 @@ const getUserById = async (req, res) => {
 // PUT update a user by ID
 const updateUser = async (req, res) => {
     const { id } = req.params;
-    const { name, email, password, surname, username, permissions } = req.body; // Destructure all fields
+    const { name, email, password, surname, username, role, permissions } = req.body; // Destructure all fields
     try {
         const updatedUser = await prisma.user.update({
             where: {
@@ -66,6 +66,7 @@ const updateUser = async (req, res) => {
                 password,
                 surname,
                 username,
+                role,
                 permissions
             }
         });

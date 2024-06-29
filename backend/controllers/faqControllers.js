@@ -10,6 +10,22 @@ const getFaqs = async (req, res) => {
         res.status(500).json({ error: error.message });
     }
 };
+const getFaq = async (req, res) => {
+    const { id } = req.params;
+    try {
+        const faq = await prisma.fAQ.findUnique({
+            where: {
+                id: parseInt(id)
+            }
+        });
+        if (!faq) {
+            return res.status(404).json({ error: "FAQ not found" });
+        }
+        res.json(faq);
+    } catch (error) {
+        res.status(500).json({ error: error.message });
+    }
+};
 
 const createQuestionAndAnswer = async (req, res) => {
     const { question, answer } = req.body;
@@ -59,4 +75,4 @@ const deleteQuestionAndAnswer = async (req, res) => {
     }
 };
 
-module.exports = { getFaqs, createQuestionAndAnswer, updateQuestionAndAnswer, deleteQuestionAndAnswer };
+module.exports = { getFaq, getFaqs, createQuestionAndAnswer, updateQuestionAndAnswer, deleteQuestionAndAnswer };

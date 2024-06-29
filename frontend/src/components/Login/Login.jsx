@@ -15,9 +15,11 @@ const Login = () => {
       const permissionsString = userPermissions.join(',');
       sessionStorage.setItem('currentUserRole', role)
       sessionStorage.setItem('userID', userId)
-      sessionStorage.setItem('permissions', permissionsString )
+      sessionStorage.setItem('permissions', permissionsString );
+      localStorage.setItem('currentUserRole',  response.data.role)
+      localStorage.setItem('userID', response.data.userId)
       console.log(response.data)
-      if (response.data.role === "admin") {
+      if (response.data.role === "admin"|| "employer") {
         navigate("/dashboard")
 
       }

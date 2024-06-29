@@ -14,7 +14,7 @@ model User {
   name        String?
   surname     String?
   username    String?
-  role        String?
+  role        String  @default("user")
   tickets     UserTicket[]
   permissions Json?
 }

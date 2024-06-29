@@ -6,7 +6,7 @@ const PermissionRoutes = ({ permission }) => {
   const permissionsArray = permissions.split(',');
 
   return (
-    permissionsArray.includes(permission) ? <Outlet /> : <Navigate to='/not-found' />
+    permissionsArray.includes(permission) ? <Outlet /> : <Navigate to='/login' />
   )
 }
 

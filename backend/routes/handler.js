@@ -37,43 +37,42 @@ router.put('/users/:id', updateUser);
 router.delete('/users/:id', deleteUser);
 router.post('/login', loginUser);
 
-/// Import necessary functions from the ticket controller
+
 const {
-  getTickets,
-  createTicket,
-  getTicketById,
-  updateTicket,
-  deleteTicket,
-  buyTicket,
-  getTicketsForUser,
+    getTickets,
+    createTicket,
+    getTicketById,
+    updateTicket,
+    deleteTicket,
+    buyTicket,
+    getTicketsForUser,
+    getAllSoldTickets
 } = require('../controllers/ticketController');
 
-
-
 // Ticket Routes
-router.get('/tickets', getTickets);           // Get all tickets
-router.post('/tickets', createTicket);        // Create a new ticket
-router.get('/tickets/:id', getTicketById);    // Get a ticket by ID
-router.put('/tickets/:id', updateTicket);     // Update a ticket by ID
-router.delete('/tickets/:id', deleteTicket);  // Delete a ticket by ID
-
-// Additional routes related to ticket management
-router.post('/buy-ticket', buyTicket);       // Buy a ticket (assuming you have a route for buying tickets)
-router.get('/tickets/user/:userId', getTicketsForUser); // Get tickets purchased by a specific user
+router.get('/tickets', getTickets);
+router.get('/tickets/:id', getTicketById);
+router.post('/tickets', createTicket);
+router.put('/tickets/:id', updateTicket);
+router.delete('/tickets/:id', deleteTicket);
+router.post('/tickets/buy', buyTicket);
+router.get('/tickets/user/:userId', getTicketsForUser);
+router.get('/tickets-data/sold', getAllSoldTickets);
 
 module.exports = router;
 
 
-// Import FAQ controllers
 const {
     createQuestionAndAnswer,
     updateQuestionAndAnswer,
     deleteQuestionAndAnswer,
-    getFaqs
+    getFaqs,
+    getFaq
 } = require('../controllers/faqControllers');
 
 // FAQ Routes
 router.get('/faq', getFaqs);
+router.get('/faq/:id', getFaq);
 router.post('/faq', createQuestionAndAnswer);
 router.put('/faq/:id', updateQuestionAndAnswer);
 router.delete('/faq/:id', deleteQuestionAndAnswer);

@@ -108,6 +108,19 @@ const getTicketsForUser = async (req, res) => {
     }
 };
 
+const getAllSoldTickets = async (req, res) => {
+    try {
+        const soldTickets = await prisma.userTicket.findMany({
+            include: { ticket: true }, // Include the associated ticket details
+        });
+
+        res.json(soldTickets);
+    } catch (error) {
+        console.error(error);
+        res.status(500).json({ error: 'Failed to fetch sold tickets', details: error.message });
+    }
+};
+
 module.exports = {
     getTickets,
     createTicket,
@@ -116,4 +129,5 @@ module.exports = {
     deleteTicket,
     buyTicket,
     getTicketsForUser,
+    getAllSoldTickets
 };

@@ -88,7 +88,7 @@ const FaqManagement = () => {
                   <TableCell>{faqItem.answer}</TableCell>
                   <TableCell>
                     <Box display="flex" gap={1}>
-                      <Button variant="contained" style={{ backgroundColor: '#630a87', color: '#fff', fontFamily: "'Roboto Mono', monospace" }} component={Link} to={`/faq/edit/${faqItem.id}`}>
+                      <Button variant="contained" style={{ backgroundColor: '#630a87', color: '#fff', fontFamily: "'Roboto Mono', monospace" }} component={Link} to={`/faq-management/edit/${faqItem.id}`}>
                         Edit
                       </Button>
                       <Button variant="contained" style={{ backgroundColor: '#FF69B4', fontFamily: "'Roboto Mono', monospace", color: 'black' }} onClick={() => openConfirmDialog(faqItem.id)}>

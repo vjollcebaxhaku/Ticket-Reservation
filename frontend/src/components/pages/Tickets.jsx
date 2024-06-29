@@ -30,7 +30,7 @@ function Tickets() {
   }, []);
 
   const handleViewMyTickets = () => {
-    const userId = sessionStorage.getItem('userID'); // Assuming userId is stored in sessionStorage
+    const userId = localStorage.getItem('userID'); // Assuming userId is stored in sessionStorage
 
     if (userId) {
       setModalLoading(true);

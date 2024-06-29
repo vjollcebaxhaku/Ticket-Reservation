@@ -34,6 +34,7 @@ import LineupDashboard from './dashboard/lineup/LineupDashboard';
 import ConcertManager from './dashboard/Concert/ConcertManager';
 import RoleManagement from './dashboard/users/RolesManagement';
 import PermissionRoutes from './PermissionsRoutes';
+import SoldTickets from './dashboard/SoldTickets';
 
 function App() {
   return (
@@ -56,15 +57,18 @@ function App() {
           <Route path="/users/add" element={<AddUser />} />
           <Route path="/users/:id" element={<EditUser />} />
           <Route path="/news-management" element={<NewsManagement />} /> {/* NewsManagement Route */}
+          <Route element={<PermissionRoutes permission="TICKETS_VIEW" />}>   
           <Route path="/ticket-management" element={<TicketManagement />} />
           <Route path="/ticket-management/add" element={<AddTicket />} /> {/* AddTicket Route */}
           <Route path="/ticket-management/edit/:id" element={<EditTicket />} /> {/* EditTicket Route */}
+          </Route>
           <Route element={<PermissionRoutes permission="FAQ_TESTING" />}>
             <Route path="/faq-management" element={<FaqManagement />} /> {/* FaqManagement Route */}
             <Route path="/faq-management/add" element={<AddFaq />} /> {/* AddFaq Route */}
             <Route path="/faq-management/edit/:id" element={<EditFaq />} /> {/* EditFaq Route */}
           </Route>
           <Route path="/news-management/add" element={<AddNews />} /> {/* AddNews Route */}
+          <Route path="/sold-tickets" element={<SoldTickets />} />
           <Route path="/news-management/edit/:id" element={<EditNews />} /> {/* EditNews Route */}
           <Route path="/gallery-management" element={<GalleryManagement />} />
           <Route path="/roles-management" element={<RolesManagement />} />

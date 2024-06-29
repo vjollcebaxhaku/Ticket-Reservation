@@ -34,7 +34,7 @@ function TicketPurchase() {
   };
   const navigate= useNavigate()
   const handleCheckout = () => {
-    const userId = sessionStorage.getItem('userID'); // Assuming userId is stored in sessionStorage
+    const userId = localStorage.getItem('userID'); 
   
     Object.keys(ticketAmounts)
       .filter(ticketId => ticketAmounts[ticketId] > 0)

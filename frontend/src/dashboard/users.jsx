@@ -50,6 +50,14 @@ const UserManagement = () => {
     setSnackbarOpen(false);
   };
 
+  const [isEmployer, setIsEmployer] = useState(false);
+
+  useEffect(() => {
+    const currentUserRole = localStorage.getItem('currentUserRole');
+    if (currentUserRole === 'employer') {
+      setIsEmployer(true);
+    }
+  }, []);
   return (
     <Box
       sx={{
@@ -99,7 +107,7 @@ const UserManagement = () => {
                 <TableCell>ID</TableCell>
                 <TableCell>Username</TableCell>
                 <TableCell>Email</TableCell>
-                <TableCell>Role</TableCell>
+               <TableCell>Role</TableCell>
                 <TableCell>Action</TableCell>
               </TableRow>
             </TableHead>
@@ -135,7 +143,7 @@ const UserManagement = () => {
                       >
                         Delete
                       </Button>
-                      <Button
+                      {!isEmployer && (  <Button
                         variant="contained"
                         style={{
                           backgroundColor: "#1976d2",
@@ -146,7 +154,7 @@ const UserManagement = () => {
                         to={`/role-management/${user.id}`}
                       >
                         Roles
-                      </Button>
+                      </Button>)}
                     </Box>
                   </TableCell>
                 </TableRow>

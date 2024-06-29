@@ -17,8 +17,9 @@ import MonetizationOnIcon from "@mui/icons-material/MonetizationOn";
 import Sidebar from './Sidebar'; 
 
 const Dashboard = () => {
-  const navigate = useNavigate();
 
+
+  const navigate = useNavigate();
   return (
     <>
       <Sidebar /> 
@@ -157,29 +158,7 @@ const Dashboard = () => {
               </CardContent>
             </Card>
           </Grid>
-          {/* Additional box 2 */}
-          <Grid item xs={4}>
-            <Card
-              sx={{
-                minWidth: 140,
-                minHeight: 140,
-                backgroundColor: "#FF69B4",
-                color: "#000",
-                display: "flex",
-                alignItems: "center",
-                justifyContent: "center",
-                cursor: "pointer",
-                border: "2px solid #000",
-              }}
-              onClick={() => navigate("/ticket-selling")}
-            >
-              <CardContent>
-                <Typography variant="h5" component="h2" sx={{ fontFamily: "'Roboto Mono', monospace", textTransform: 'uppercase' }}>
-                  <MonetizationOnIcon fontSize="large" /> TICKET MANAGEMENT
-                </Typography>
-              </CardContent>
-            </Card>
-          </Grid>
+
           <Grid item xs={4}>
             <Card
               sx={{

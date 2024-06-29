@@ -30,7 +30,9 @@ const RoleManagement = () => {
       try {
         const response = await axios.get(`http://localhost:4000/users/${id}`);
         setUser(response.data);
-        setPermissions(response.data.permissions?.apps || []); // Handle null/undefined permissions
+      console.log(response);
+
+        setPermissions(response.data.permissions?.apps || []); 
       } catch (error) {
         console.error('Error fetching user:', error);
       }
