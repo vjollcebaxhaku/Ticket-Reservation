@@ -1,7 +1,7 @@
 import React, { useState, useEffect } from 'react';
 import axios from 'axios';
-import Nav from '../Nav'; // Import Nav component
-import Footer from '../Footer'; // Import Footer component
+import Nav from '../Nav'; 
+import Footer from '../Footer'; 
 import Layout from '../Layout';
 import Slider from '../Slider';
 import galleryPic from './pictures/pic5.png';
@@ -56,7 +56,7 @@ function News() {
 
   return (
     <>
-      <Nav /> {/* Include the Nav component */}
+      <Nav /> 
       <Layout pictureSrc={galleryPic}>
         <Slider />
         <section>
@@ -102,7 +102,7 @@ function News() {
           </div>
         </section>
       </Layout>
-      <Footer /> {/* Include the Footer component */}
+      <Footer /> 
     </>
   );
 }

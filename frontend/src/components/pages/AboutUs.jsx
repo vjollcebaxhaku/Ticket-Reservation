@@ -1,6 +1,6 @@
 import React, { useState } from 'react';
-import Nav from '../Nav'; // Import Nav component
-import Footer from '../Footer'; // Import Footer component
+import Nav from '../Nav'; 
+import Footer from '../Footer'; 
 import Layout from '../Layout';
 import Slider from '../Slider';
 import ticketPic from './pictures/pic6.png';

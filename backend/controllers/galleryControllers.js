@@ -2,7 +2,6 @@ const { PrismaClient } = require('@prisma/client');
 const prisma = new PrismaClient();
 const multer = require('multer');
 
-// Setup storage for file uploads
 const storage = multer.diskStorage({
   destination: (req, file, cb) => {
     cb(null, 'uploads/');
@@ -14,7 +13,6 @@ const storage = multer.diskStorage({
 
 const upload = multer({ storage: storage }).single('image');
 
-// Create a new gallery item
 const createGallery = async (req, res) => {
   upload(req, res, async (err) => {
     if (err) {
@@ -42,7 +40,6 @@ const createGallery = async (req, res) => {
   });
 };
 
-// Get all gallery items
 const getGalleryItems = async (req, res) => {
   try {
     const galleryItems = await prisma.gallery.findMany();
@@ -53,7 +50,7 @@ const getGalleryItems = async (req, res) => {
   }
 };
 
-// Get a gallery item by ID
+
 const getGalleryById = async (req, res) => {
   try {
     const { id } = req.params;
@@ -72,7 +69,6 @@ const getGalleryById = async (req, res) => {
   }
 };
 
-// Update a gallery item
 const updateGallery = async (req, res) => {
   upload(req, res, async (err) => {
     if (err) {
@@ -107,7 +103,6 @@ const updateGallery = async (req, res) => {
   });
 };
 
-// Delete a gallery item
 const deleteGallery = async (req, res) => {
   try {
     const { id } = req.params;

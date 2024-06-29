@@ -1,7 +1,6 @@
 const express = require('express');
 const router = express.Router();
 
-// Import Gallery controllers
 const {
     getGalleryItems,
     createGallery,
@@ -10,16 +9,12 @@ const {
     deleteGallery
 } = require('../controllers/galleryControllers');
 
-// Gallery Routes
 router.get('/gallery', getGalleryItems);
 router.get('/gallery/:id', getGalleryById);
 router.post('/gallery', createGallery);
 router.put('/gallery/:id', updateGallery);
 router.delete('/gallery/:id', deleteGallery);
 
-
-
-// Import User controllers
 const {
     getUsers,
     createUser,
@@ -29,7 +24,6 @@ const {
     loginUser
 } = require('../controllers/userControllers');
 
-// User Routes
 router.get('/users', getUsers);
 router.post('/users', createUser);
 router.get('/users/:id', getUserById);
@@ -49,7 +43,6 @@ const {
     getAllSoldTickets
 } = require('../controllers/ticketController');
 
-// Ticket Routes
 router.get('/tickets', getTickets);
 router.get('/tickets/:id', getTicketById);
 router.post('/tickets', createTicket);
@@ -70,14 +63,12 @@ const {
     getFaq
 } = require('../controllers/faqControllers');
 
-// FAQ Routes
 router.get('/faq', getFaqs);
 router.get('/faq/:id', getFaq);
 router.post('/faq', createQuestionAndAnswer);
 router.put('/faq/:id', updateQuestionAndAnswer);
 router.delete('/faq/:id', deleteQuestionAndAnswer);
 
-// Import News controllers
 const {
     createNews,
     updateNews,
@@ -86,7 +77,6 @@ const {
     getNewsById
 } = require('../controllers/newsControllers');
 
-// News Routes
 router.get('/news', getNews);
 router.get('/news/:id', getNewsById);
 router.post('/news', createNews);
@@ -101,7 +91,6 @@ router.get('/concert/:id', concertController.getConcert);
 router.put('/concert/:id', concertController.updateConcert);
 router.delete('/concert/:id', concertController.deleteConcert);
 
-// Lineup routes
 router.post('/lineup', lineupController.createLineup);
 router.get('/lineup', lineupController.getAllLineup);
 router.get('/lineup/:id', lineupController.getLineup);

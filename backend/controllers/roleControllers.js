@@ -1,7 +1,6 @@
 const { PrismaClient } = require('@prisma/client');
 const prisma = new PrismaClient();
 
-// GET all roles
 const getRoles = async (req, res) => {
     try {
         const roles = await prisma.role.findMany();
@@ -11,7 +10,6 @@ const getRoles = async (req, res) => {
     }
 };
 
-// POST create a new role
 const createRole = async (req, res) => {
     const { name } = req.body;
     try {
@@ -26,7 +24,6 @@ const createRole = async (req, res) => {
     }
 };
 
-// PUT update a role by ID
 const updateRole = async (req, res) => {
     const { id } = req.params;
     const { name } = req.body;
@@ -45,7 +42,6 @@ const updateRole = async (req, res) => {
     }
 };
 
-// DELETE a role by ID
 const deleteRole = async (req, res) => {
     const { id } = req.params;
     try {

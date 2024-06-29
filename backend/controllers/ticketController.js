@@ -68,20 +68,18 @@ const deleteTicket = async (req, res) => {
 const buyTicket = async (req, res) => {
     const { userId, ticketId, quantity } = req.body;
     try {
-        // Check if the ticket exists
         const ticket = await prisma.ticket.findUnique({ where: { id: parseInt(ticketId) } });
         if (!ticket) {
             return res.status(404).json({ error: 'Ticket not found' });
         }
         
-        // Create user ticket entry
         const userTicket = await prisma.userTicket.create({
             data: {
                 userId: parseInt(userId),
                 ticketId: parseInt(ticketId),
                 quantity: parseInt(quantity),
             },
-            include: { ticket: true }, // Include the ticket details in response
+            include: { ticket: true },
         });
 
         res.status(201).json(userTicket);
@@ -111,7 +109,7 @@ const getTicketsForUser = async (req, res) => {
 const getAllSoldTickets = async (req, res) => {
     try {
         const soldTickets = await prisma.userTicket.findMany({
-            include: { ticket: true }, // Include the associated ticket details
+            include: { ticket: true }, 
         });
 
         res.json(soldTickets);

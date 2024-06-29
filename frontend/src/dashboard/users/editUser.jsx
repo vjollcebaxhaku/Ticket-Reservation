@@ -41,6 +41,7 @@ const EditUser = () => {
     try {
       const response = await axios.put(`http://localhost:4000/users/${id}`, user);
       console.log('Response from server:', response.data); // Log the response from the server
+      navigate('/users'); // Navigate to the users page after successful update
     } catch (error) {
       console.error('Error updating user:', error);
       if (error.response && error.response.data) {

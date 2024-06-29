@@ -1,7 +1,7 @@
 import React, { useState, useEffect } from 'react';
 import axios from 'axios';
-import Nav from '../Nav'; // Update import path for Nav component
-import Footer from '../Footer'; // Update import path for Footer component
+import Nav from '../Nav'; 
+import Footer from '../Footer'; 
 import Layout from '../Layout';
 import Slider from '../Slider';
 import lineupPic from './pictures/pic4.png'; 
@@ -42,13 +42,12 @@ function Lineup() {
   };
 
   const handleClick = (year) => {
-    // Handle click event, for example, navigate to the corresponding page
     console.log(`Clicked on ${year}`);
   };
 
   return (
     <>
-      <Nav /> {/* Include the Nav component */}
+      <Nav /> 
       <Layout pictureSrc={lineupPic} contentStyle={contentStyle}>
         <Slider />
         <section>
@@ -59,10 +58,10 @@ function Lineup() {
       <Box
         sx={{
           backgroundColor: 'lightgray',
-          height: '75px', // Ensure the height matches the Slider
+          height: '75px',
           display: 'flex',
           alignItems: 'center',
-          justifyContent: 'space-around', // Adjust the spacing as needed
+          justifyContent: 'space-around',
         }}
       >
         {concerts.map((concert) => (
@@ -75,15 +74,15 @@ function Lineup() {
               textTransform: 'uppercase',
               color: 'black',
               fontSize: '17px',
-              fontFamily: 'Roboto Mono, monospace', // Set the font to 'Roboto Mono, monospace'
-              cursor: 'pointer', // Add cursor pointer for clickable effect
+              fontFamily: 'Roboto Mono, monospace',
+              cursor: 'pointer', 
             }}
           >
             {concert.name} {concert.year}
           </Typography>
         ))}
       </Box>
-      <Footer /> {/* Include the Footer component */}
+      <Footer /> 
     </>
   );
 }

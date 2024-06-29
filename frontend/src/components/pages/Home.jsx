@@ -2,9 +2,9 @@ import React from 'react';
 import Layout from '../Layout';
 import Slider from '../Slider';
 import { Box, Typography, TextField, Button } from '@mui/material';
-import { Link } from 'react-router-dom'; // Make sure you have react-router-dom installed and set up
-import Nav from '../Nav'; // Import Nav component
-import Footer from '../Footer'; // Import Footer component
+import { Link } from 'react-router-dom';
+import Nav from '../Nav'; 
+import Footer from '../Footer'; 
 
 const pictureSrc = require('./pictures/pic1.png');
 
@@ -15,7 +15,7 @@ function Home() {
       <Box
         sx={{
           backgroundColor: 'lightgray',
-          height: '75px', // Ensure the height matches the Slider
+          height: '75px', 
           display: 'flex',
           alignItems: 'center',
           justifyContent: 'center',
@@ -28,7 +28,7 @@ function Home() {
             textTransform: 'uppercase',
             color: 'black',
             fontSize: '17px',
-            fontFamily: 'Roboto Mono, monospace', // Set the font to 'Roboto Mono, monospace'
+            fontFamily: 'Roboto Mono, monospace', 
           }}
         >
           TICKETS & MORE
@@ -42,13 +42,13 @@ function Home() {
       <Box
         sx={{
           backgroundColor: 'white',
-          height: '300px', // Bigger height
+          height: '300px', 
           display: 'flex',
           flexDirection: 'column',
           alignItems: 'center',
           justifyContent: 'center',
           textAlign: 'center',
-          padding: '10px', // Add some padding for better spacing
+          padding: '10px', 
         }}
       >
         <Typography
@@ -58,8 +58,8 @@ function Home() {
             textTransform: 'uppercase',
             color: 'purple',
             fontSize: '30px',
-            fontFamily: 'Roboto Mono, monospace', // Set the font to 'Roboto Mono, monospace'
-            marginBottom: '10px', // Add some space between the lines
+            fontFamily: 'Roboto Mono, monospace', 
+            marginBottom: '10px', 
           }}
         >
           SUNNY HILL FESTIVAL 2024
@@ -70,14 +70,14 @@ function Home() {
             fontWeight: 'bold',
             textTransform: 'uppercase',
             color: 'grey',
-            fontSize: '20px', // Adjust font size to make it more visible
-            fontFamily: 'Roboto Mono, monospace', // Set the font to 'Roboto Mono, monospace'
-            marginBottom: '20px', // Add margin bottom to separate the text from the button
+            fontSize: '20px', 
+            fontFamily: 'Roboto Mono, monospace', 
+            marginBottom: '20px', 
           }}
         >
           25, 26, 27, 28 JULY
         </Typography>
-        <Link to="/ticket-purchase"> {/* Use Link instead of a button */}
+        <Link to="/ticket-purchase"> 
           <button className="bg-purple-800 text-black font-mono rounded-sm px-10 py-2 text-custom mt-4">BUY NOW</button>
         </Link>
       </Box>

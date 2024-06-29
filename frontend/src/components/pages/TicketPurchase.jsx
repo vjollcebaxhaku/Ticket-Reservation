@@ -1,7 +1,7 @@
 import React, { useEffect, useState } from 'react';
 import axios from 'axios';
-import earlyBirdImage from './pictures/earlybird.png'; // Placeholder for ticket images
-import believerImage from './pictures/believer.png'; // Placeholder for ticket images
+import earlyBirdImage from './pictures/earlybird.png'; 
+import believerImage from './pictures/believer.png'; 
 import { useNavigate } from 'react-router-dom';
 
 function TicketPurchase() {
@@ -10,7 +10,7 @@ function TicketPurchase() {
   const [showCheckout, setShowCheckout] = useState(false);
 
   useEffect(() => {
-    axios.get('http://localhost:4000/tickets') // Replace 'your_port' with the actual port number
+    axios.get('http://localhost:4000/tickets') 
       .then(response => {
         const initialAmounts = response.data.reduce((acc, ticket) => {
           acc[ticket.id] = 0;

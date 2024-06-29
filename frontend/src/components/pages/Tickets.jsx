@@ -5,9 +5,9 @@ import Layout from '../Layout';
 import Nav from '../Nav';
 import Footer from '../Footer';
 import ticketPic from './pictures/pic3.png';
-import Modal from 'react-modal'; // Import react-modal
+import Modal from 'react-modal'; 
 
-Modal.setAppElement('#root'); // Set app root element for accessibility
+Modal.setAppElement('#root'); 
 
 function Tickets() {
   const [tickets, setTickets] = useState([]);
@@ -18,7 +18,7 @@ function Tickets() {
   const [modalLoading, setModalLoading] = useState(false);
 
   useEffect(() => {
-    axios.get('http://localhost:4000/tickets')  // replace 'your_port' with the actual port number
+    axios.get('http://localhost:4000/tickets')  
       .then(response => {
         setTickets(response.data);
         setLoading(false);
@@ -30,8 +30,7 @@ function Tickets() {
   }, []);
 
   const handleViewMyTickets = () => {
-    const userId = localStorage.getItem('userID'); // Assuming userId is stored in sessionStorage
-
+    const userId = localStorage.getItem('userID'); 
     if (userId) {
       setModalLoading(true);
       axios.get(`http://localhost:4000/tickets/user/${userId}`)
@@ -43,10 +42,8 @@ function Tickets() {
         .catch(error => {
           console.error('Error fetching user tickets:', error);
           setModalLoading(false);
-          // Handle error state or message to user
         });
     } else {
-      // Handle case where userId is not available
       console.error('User ID not found in sessionStorage');
     }
   };
@@ -95,7 +92,6 @@ function Tickets() {
                 <tr>
                   <th className="border px-4 py-2">Ticket Name</th>
                   <th className="border px-4 py-2">Price (€)</th>
-                  {/* Add more table headers if needed */}
                 </tr>
               </thead>
               <tbody>
@@ -103,7 +99,6 @@ function Tickets() {
                   <tr key={ticket.id}>
                     <td className="border px-4 py-2">{ticket.name}</td>
                     <td className="border px-4 py-2">{ticket.price.toFixed(2)}</td>
-                    {/* Add more table cells if needed */}
                   </tr>
                 ))}
               </tbody>

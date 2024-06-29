@@ -1,8 +1,8 @@
-// controllers/userControllers.js
+
 const { PrismaClient } = require('@prisma/client');
 const prisma = new PrismaClient();
 
-// GET all users
+
 const getUsers = async (req, res) => {
     try {
         const users = await prisma.user.findMany();
@@ -12,9 +12,8 @@ const getUsers = async (req, res) => {
     }
 };
 
-// POST create a new user
 const createUser = async (req, res) => {
-    const { name, email, password, surname, username } = req.body; // Destructure all fields
+    const { name, email, password, surname, username } = req.body;
     try {
         const newUser = await prisma.user.create({
             data: {
@@ -32,7 +31,6 @@ const createUser = async (req, res) => {
     }
 };
 
-// GET a single user by ID
 const getUserById = async (req, res) => {
     const { id } = req.params;
     try {
@@ -51,10 +49,9 @@ const getUserById = async (req, res) => {
     }
 };
 
-// PUT update a user by ID
 const updateUser = async (req, res) => {
     const { id } = req.params;
-    const { name, email, password, surname, username, role, permissions } = req.body; // Destructure all fields
+    const { name, email, password, surname, username, role, permissions } = req.body;
     try {
         const updatedUser = await prisma.user.update({
             where: {
@@ -76,7 +73,6 @@ const updateUser = async (req, res) => {
     }
 };
 
-// DELETE a user by ID
 const deleteUser = async (req, res) => {
     const { id } = req.params;
     try {
@@ -91,7 +87,6 @@ const deleteUser = async (req, res) => {
     }
 };
 
-// Login a user
 const loginUser = async (req, res) => {
     const { email, password } = req.body;
     try {

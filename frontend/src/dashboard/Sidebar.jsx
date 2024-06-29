@@ -14,12 +14,6 @@ const Sidebar = ({ openSidebarToggle, OpenSidebar }) => {
             <span>HOMEPAGE</span>
           </Link>
         </li>
-        <li className='sidebar-list-item' style={{ margin: '0 10px' }}>
-          <Link to="/roles" style={{ color: '#008000', textDecoration: 'none', fontWeight: 'bold', fontSize: '16px', display: 'flex', alignItems: 'center' }}>
-            <BsPeopleFill className='icon' style={{ marginRight: '10px', marginLeft: '5px' }} />
-            <span>ROLES</span>
-          </Link>
-        </li>
         {/* Other sidebar items */}
       </ul>
       <span className='icon close_icon' style={{ color: '#008000', cursor: 'pointer' }} onClick={OpenSidebar}></span>

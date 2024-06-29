@@ -1,6 +1,6 @@
-// src/components/Navbar.jsx
+
 import React from 'react';
-import './Navbar.css'; // Import CSS for styling
+import './Navbar.css'; 
 
 const Navbar = ({ children }) => {
   return (

@@ -1,4 +1,4 @@
-// controllers/newsControllers.js
+
 const { PrismaClient } = require('@prisma/client');
 const prisma = new PrismaClient();
 
@@ -29,7 +29,6 @@ const getNewsById = async (req, res) => {
     }
 };
 
-// Controller to create a new news item
 const createNews = async (req, res) => {
     const { title, content, publishedAt } = req.body;
     try {
@@ -46,7 +45,6 @@ const createNews = async (req, res) => {
     }
 };
 
-// Controller to update an existing news item
 const updateNews = async (req, res) => {
     const { id } = req.params;
     const { title, content, publishedAt } = req.body;
@@ -67,7 +65,6 @@ const updateNews = async (req, res) => {
     }
 };
 
-// Controller to delete a news item
 const deleteNews = async (req, res) => {
     const { id } = req.params;
     try {
