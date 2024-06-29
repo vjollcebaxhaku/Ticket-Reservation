@@ -9,7 +9,7 @@ const Sidebar = ({ openSidebarToggle, OpenSidebar }) => {
       </div>
       <ul className='sidebar-list' style={{ listStyleType: 'none', display: 'flex', alignItems: 'center', padding: 0 }}>
         <li className='sidebar-list-item' style={{ margin: '0 10px' }}>
-          <Link to="/home" style={{ color: '#008000', textDecoration: 'none', fontWeight: 'bold', fontSize: '16px', display: 'flex', alignItems: 'center' }}>
+          <Link to="/" style={{ color: '#008000', textDecoration: 'none', fontWeight: 'bold', fontSize: '16px', display: 'flex', alignItems: 'center' }}>
             <BsGrid1X2Fill className='icon' style={{ marginRight: '10px', marginLeft: '5px' }} />
             <span>HOMEPAGE</span>
           </Link>

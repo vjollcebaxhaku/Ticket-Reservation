@@ -55,7 +55,7 @@ router.get('/tickets/:id', getTicketById);
 router.post('/tickets', createTicket);
 router.put('/tickets/:id', updateTicket);
 router.delete('/tickets/:id', deleteTicket);
-router.post('/tickets/buy', buyTicket);
+router.post('/buy-ticket', buyTicket);
 router.get('/tickets/user/:userId', getTicketsForUser);
 router.get('/tickets-data/sold', getAllSoldTickets);
 

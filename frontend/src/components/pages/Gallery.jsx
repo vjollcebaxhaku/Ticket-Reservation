@@ -1,11 +1,11 @@
 import React, { useState, useEffect } from 'react';
-import { Link } from 'react-router-dom'; 
+import { Link } from 'react-router-dom';
 import axios from 'axios';
 import Layout from '../Layout';
 import Nav from '../Nav';
 import Footer from '../Footer';
 import Slider from '../Slider';
-import galleryPic from './pictures/pic2.png'; 
+import galleryPic from './pictures/pic2.png';
 import { Box, Typography } from '@mui/material';
 
 function Gallery() {
@@ -55,19 +55,39 @@ function Gallery() {
             </Typography>
           ))}
         </Box>
-        <section>
-          <div className="gallery-grid" style={{ display: 'flex', flexDirection: 'column' }}>
-            {galleryItems.map((item, index) => (
-              <div key={item.id} className="gallery-row" style={{ display: 'flex', width: '100%' }}>
-                <Link to={`/page${index + 1}`} style={{ flex: 1, overflow: 'hidden', position: 'relative' }}>
-                  <img src={item.imageUrl} alt={item.title} style={{ width: '100%', objectFit: 'cover', height: '400px' }} />
-                  <div style={{ position: 'absolute', top: '50%', left: '50%', transform: 'translate(-50%, -50%)', textAlign: 'center', color: 'white' }}>
-                    <h2 style={{ fontSize: '18px', fontFamily: 'Roboto Mono, monospace', fontWeight: 'bold' }}>{item.title}</h2>
-                  </div>
-                </Link>
+        <section style={{ display: 'flex', justifyContent: 'space-between' }}>
+          {galleryItems.map((item, index) => (
+            <Link key={item.id} to={`/page${index + 1}`} style={{ width: '50%', position: 'relative', overflow: 'hidden' }}>
+              <img
+                src={`http://localhost:4000${item.imageUrl}`}
+                alt={item.title}
+                style={{ width: '100%', height: '400px', objectFit: 'cover' }}
+              />
+              <div
+                style={{
+                  position: 'absolute',
+                  bottom: '0',
+                  left: '0',
+                  right: '0',
+                  backgroundColor: 'rgba(0, 0, 0, 0.5)',
+                  color: 'white',
+                  padding: '10px',
+                  textAlign: 'center',
+                }}
+              >
+                <h2
+                  style={{
+                    fontSize: '18px',
+                    fontFamily: 'Roboto Mono, monospace',
+                    fontWeight: 'bold',
+                    margin: '0',
+                  }}
+                >
+                  {item.title}
+                </h2>
               </div>
-            ))}
-          </div>
+            </Link>
+          ))}
         </section>
       </Layout>
       <Footer />

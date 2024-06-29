@@ -23,7 +23,7 @@ const createGallery = async (req, res) => {
 
     try {
       const { title, description } = req.body;
-      const imageUrl = `C:/Users/Vjollca/desktop/Ticket-Reservation/frontend/public/Uploads/${req.file.filename}`;
+      const imageUrl = `/uploads/${req.file.filename}`;
 
       const newGalleryItem = await prisma.gallery.create({
         data: {
@@ -82,7 +82,7 @@ const updateGallery = async (req, res) => {
     try {
       const { id } = req.params;
       const { title, description } = req.body;
-      const imageUrl = req.file ? `C:/Users/Vjollca/desktop/Ticket-Reservation/frontend/public/Uploads/${req.file.filename}` : undefined;
+      const imageUrl = req.file ? `/uploads/${req.file.filename}` : undefined;
 
       const updateData = {
         title,

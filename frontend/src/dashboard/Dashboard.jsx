@@ -172,11 +172,11 @@ const Dashboard = () => {
                 cursor: "pointer",
                 border: "2px solid #000",
               }}
-              onClick={() => navigate("/lineup-managment")}
+              onClick={() => navigate("/sold-tickets")}
             >
               <CardContent>
                 <Typography variant="h5" component="h2" sx={{ fontFamily: "'Roboto Mono', monospace", textTransform: 'uppercase' }}>
-                  <AccountCircle fontSize="large" /> Line Ups
+                  <AccountCircle fontSize="large" /> SOLD TICKETS
                 </Typography>
               </CardContent>
             </Card>

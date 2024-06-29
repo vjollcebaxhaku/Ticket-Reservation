@@ -9,25 +9,22 @@ const Login = () => {
   const handleSubmit = async (e) => {
     e.preventDefault();
     try {
-      const response = await axios.post('http://localhost:4000/login', { email, password })
-      const { role, userId, permissions } = response.data
+      const response = await axios.post('http://localhost:4000/login', { email, password });
+      console.log(response);
+      const { role, userId, permissions } = response.data;
       const userPermissions = permissions?.apps || [];
       const permissionsString = userPermissions.join(',');
-      sessionStorage.setItem('currentUserRole', role)
-      sessionStorage.setItem('userID', userId)
-      sessionStorage.setItem('permissions', permissionsString );
-      localStorage.setItem('currentUserRole',  response.data.role)
-      localStorage.setItem('userID', response.data.userId)
-      console.log(response.data)
-      if (response.data.role === "admin"|| "employer") {
-        navigate("/dashboard")
-
-      }
-      else if (response.data.success === true) {
-        navigate("/")
-      }
-      else {
-        navigate("/login")
+      sessionStorage.setItem('currentUserRole', role);
+      sessionStorage.setItem('userID', userId);
+      sessionStorage.setItem('permissions', permissionsString);
+      localStorage.setItem('currentUserRole', role);
+      localStorage.setItem('userID', userId);
+    
+      if (role === "admin" || role === "employer") {
+        navigate("/dashboard");
+      } else if (response.success === true) {
+        navigate("/");
+      } else {
 
       }
     } catch (error) {
@@ -72,7 +69,7 @@ const Login = () => {
           </div>
           <button
             type="submit"
-            className="bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded focus:outline-none focus:shadow-outline"
+            className="bg-purple-600 hover:bg-purple-700 text-white font-bold py-2 px-4 rounded focus:outline-none focus:shadow-outline w-full"
           >
             Login
           </button>
